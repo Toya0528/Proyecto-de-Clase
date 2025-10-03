@@ -6,35 +6,34 @@ import com.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import com.edu.uco.nose.crosscuting.helper.TextHelper;
 import com.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public final class CountryDomain extends Domain {
-
+public class IdentificationTypeDomain extends Domain {
+	
 	private String name;
-
-
-	public CountryDomain() {
+	
+	public IdentificationTypeDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 	}
-
-	public CountryDomain(final UUID id) {
+	
+	public IdentificationTypeDomain(final UUID id) {
 		super(id);
 		setName(TextHelper.getDefault());
 	}
+	
 
-	public CountryDomain(final UUID id, final String name) {
+	public IdentificationTypeDomain(final UUID id, final String name) {
 		super(id);
-		setName(name);
+		this.name = name;
 	}
 	
-	static CountryDomain getDefaultValue() {
-		return new CountryDomain();
+	static IdentificationTypeDomain getDefaultValue() {
+		return new IdentificationTypeDomain();
 	}
 	
-	static CountryDomain getDefaultValue(final CountryDomain country) {
-		return ObjectHelper.getDefault(country, getDefaultValue());
+	static IdentificationTypeDomain getDefaultValue(final IdentificationTypeDomain identifiactionType) {
+		return ObjectHelper.getDefault(identifiactionType, getDefaultValue());
 	}
-	
-	
+
 	public String getName() {
 		return name;
 	}
@@ -42,4 +41,5 @@ public final class CountryDomain extends Domain {
 	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
+	
 }
