@@ -1,0 +1,45 @@
+package com.edu.uco.nose.data.dao.entity;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.edu.uco.nose.crosscuting.exception.NoseException;
+import com.edu.uco.nose.crosscuting.helper.ObjectHelper;
+import com.edu.uco.nose.crosscuting.messagescatalog.MessagesEnum;
+
+public abstract class SqlConnection {
+	
+	private Connection connection;
+	
+	protected SqlConnection(final Connection connection) {
+		setConnection(connection);
+	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
+	private void setConnection(final Connection connection) {
+		if (ObjectHelper.isNull(connection)) {
+			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
+			var technicalMessage = MessagesEnum.TECHNINAL_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
+			throw NoseException.create(userMessage, technicalMessage);
+		}
+		
+		try {
+			if (connection.isClosed()) {
+				var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
+				var technicalMessage = MessagesEnum.TECHNINAL_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
+				throw NoseException.create(userMessage, technicalMessage);
+				
+			}
+		} catch (final SQLException exception) {
+			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS.getContent();
+		}
+		
+		this.connection = connection;
+	}
+	
+	
+
+}
