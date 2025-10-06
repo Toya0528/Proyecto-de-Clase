@@ -6,27 +6,28 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class StateEntity extends Entity {
+public final class StateEntity {
 	
+	private UUID id;
 	private String name;
 	private CountryEntity country;
 	
 	public StateEntity() {
-		super(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setCountry(CountryEntity.getDefaultValue());
 	}
 	
 	public StateEntity(final UUID id) {
-		super(id);
+		setId(id);
 		setName(TextHelper.getDefault());
 		setCountry(CountryEntity.getDefaultValue());
 	}
 	
 	public StateEntity(final UUID id, final String name, final CountryEntity country) {
-		super(id);
-		this.name = name;
-		this.country = country;
+		setId(id);
+		setName(name);
+		setCountry(country);
 	}
 	
 	static StateEntity getDefaultValue() {
@@ -35,6 +36,14 @@ public class StateEntity extends Entity {
 	
 	static StateEntity getDefaultValue(final StateEntity state) {
 		return ObjectHelper.getDefault(state, getDefaultValue());
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(final UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {
