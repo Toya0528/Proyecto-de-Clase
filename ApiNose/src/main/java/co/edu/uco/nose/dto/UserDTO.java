@@ -7,8 +7,9 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class UserDTO extends DTO {
+public class UserDTO {
 	 
+	private UUID id;
 	private IdentificationTypeDTO identificationType;
 	private String identificationNumber;
 	private String firstName;
@@ -22,22 +23,7 @@ public class UserDTO extends DTO {
 	private boolean cellPhoneNumberConfirmed;
 	
 	public UserDTO() {
-		super(UUIDHelper.getUUIDHelper().getDefault());
-		setIdentificationType(IdentificationTypeDTO.getDefaultValue());
-		setIdentificationNumber(TextHelper.getDefault());;
-		setFirstName(TextHelper.getDefault());
-		setMiddleName(TextHelper.getDefault());
-		setLastName(TextHelper.getDefault());
-		setSecondLastName(TextHelper.getDefault());
-		setResidenceCity(CityDTO.getDefaultValue());
-		setEmail(TextHelper.getDefault());
-		setCellPhoneNumber(TextHelper.getDefault());
-		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
-		setEmailConfirmed(BooleanHelper.getDefault());
-	}
-	
-	public UserDTO(final UUID id) {
-		super(id);
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setIdentificationType(IdentificationTypeDTO.getDefaultValue());
 		setIdentificationNumber(TextHelper.getDefault());
 		setFirstName(TextHelper.getDefault());
@@ -47,26 +33,43 @@ public class UserDTO extends DTO {
 		setResidenceCity(CityDTO.getDefaultValue());
 		setEmail(TextHelper.getDefault());
 		setCellPhoneNumber(TextHelper.getDefault());
-		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
 		setEmailConfirmed(BooleanHelper.getDefault());
+		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
 	}
 	
+	public UserDTO(final UUID id) {
+		setId(id);
+		setIdentificationType(IdentificationTypeDTO.getDefaultValue());
+		setIdentificationNumber(TextHelper.getDefault());
+		setFirstName(TextHelper.getDefault());
+		setMiddleName(TextHelper.getDefault());
+		setLastName(TextHelper.getDefault());
+		setSecondLastName(TextHelper.getDefault());
+		setResidenceCity(CityDTO.getDefaultValue());
+		setEmail(TextHelper.getDefault());
+		setCellPhoneNumber(TextHelper.getDefault());
+		setEmailConfirmed(BooleanHelper.getDefault());
+		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
+	}
 	
-	public UserDTO(final UUID id, final IdentificationTypeDTO identificationType, final String identificationNumber, final String firstName,
-			final String middleName, final String lastName, final String secondLastName, final CityDTO residenceCity, final String email,
-			final String cellPhoneNumber, final boolean emailConfirmed, final boolean cellPhoneNumberConfirmed) {
-		super(id);
-		this.identificationType = identificationType;
-		this.identificationNumber = identificationNumber;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.secondLastName = secondLastName;
-		this.residenceCity = residenceCity;
-		this.email = email;
-		this.cellPhoneNumber = cellPhoneNumber;
-		this.emailConfirmed = emailConfirmed;
-		this.cellPhoneNumberConfirmed = cellPhoneNumberConfirmed;
+	public UserDTO(final UUID id, final IdentificationTypeDTO identificationType, 
+			final String identificationNumber, final String firstName, 
+			final String middleName, final String lastName, 
+			final String secondLastName, final CityDTO residenceCity, 
+			final String email, final String cellPhoneNumber, 
+			final boolean emailConfirmed, final boolean cellPhoneNumberConfirmed) {
+		setId(id);
+		setIdentificationType(identificationType);
+		setIdentificationNumber(identificationNumber);
+		setFirstName(firstName);
+		setMiddleName(middleName);
+		setLastName(lastName);
+		setSecondLastName(secondLastName);
+		setResidenceCity(residenceCity);
+		setEmail(email);
+		setCellPhoneNumber(cellPhoneNumber);
+		setEmailConfirmed(emailConfirmed);
+		setCellPhoneNumberConfirmed(cellPhoneNumberConfirmed);
 	}
 	
 	static UserDTO getDefaultValue() {
@@ -75,6 +78,14 @@ public class UserDTO extends DTO {
 	
 	static UserDTO getDefaultValue(final UserDTO user) {
 		return ObjectHelper.getDefault(user, getDefaultValue());
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(final UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public IdentificationTypeDTO getIdentificationType() {

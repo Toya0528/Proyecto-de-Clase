@@ -6,27 +6,28 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class StateDTO extends DTO {
+public class StateDTO {
 	
+	private UUID id;
 	private String name;
 	private CountryDTO country;
 	
 	public StateDTO() {
-		super(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setCountry(CountryDTO.getDefaultValue());
 	}
 	
 	public StateDTO(final UUID id) {
-		super(id);
+		setId(id);
 		setName(TextHelper.getDefault());
 		setCountry(CountryDTO.getDefaultValue());
 	}
 	
 	public StateDTO(final UUID id, final String name, final CountryDTO country) {
-		super(id);
-		this.name = name;
-		this.country = country;
+		setId(id);
+		setName(name);
+		setCountry(country);
 	}
 	
 	static StateDTO getDefaultValue() {
@@ -35,6 +36,14 @@ public class StateDTO extends DTO {
 	
 	static StateDTO getDefaultValue(final StateDTO state) {
 		return ObjectHelper.getDefault(state, getDefaultValue());
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(final UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

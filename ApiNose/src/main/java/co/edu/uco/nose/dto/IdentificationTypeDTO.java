@@ -6,24 +6,24 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class IdentificationTypeDTO extends DTO {
+public class IdentificationTypeDTO {
 	
+	private UUID id;
 	private String name;
 	
 	public IdentificationTypeDTO() {
-		super(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 	}
 	
 	public IdentificationTypeDTO(final UUID id) {
-		super(id);
+		setId(id);
 		setName(TextHelper.getDefault());
 	}
 	
-
 	public IdentificationTypeDTO(final UUID id, final String name) {
-		super(id);
-		this.name = name;
+		setId(id);
+		setName(name);
 	}
 	
 	static IdentificationTypeDTO getDefaultValue() {
@@ -32,6 +32,14 @@ public class IdentificationTypeDTO extends DTO {
 	
 	static IdentificationTypeDTO getDefaultValue(final IdentificationTypeDTO identifiactionType) {
 		return ObjectHelper.getDefault(identifiactionType, getDefaultValue());
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(final UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {
