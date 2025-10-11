@@ -10,7 +10,7 @@ import co.edu.uco.nose.entity.StateEntity;
 
 public final class StatePostgreSqlDAO extends SqlConnection implements StateDAO {
 	
-	protected StatePostgreSqlDAO(java.sql.Connection connection) {
+	public StatePostgreSqlDAO(java.sql.Connection connection) {
 		super(connection);
 	}
 	
