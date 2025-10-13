@@ -7,7 +7,7 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class UserDTO {
+public final class UserDTO {
 	 
 	private UUID id;
 	private IdentificationTypeDTO identificationType;

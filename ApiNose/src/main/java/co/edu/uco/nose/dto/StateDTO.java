@@ -6,7 +6,7 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class StateDTO {
+public final class StateDTO {
 	
 	private UUID id;
 	private String name;

@@ -55,11 +55,6 @@ public final class PostgresqlDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public IdentificationTypeDAO getIdentificationTypeDAO() {
-		return new IdentificationTypePostgreSqlDAO(connection);
-	}
-
-	@Override
 	public UserDAO getUserDAO() {
 		return new UserPostgreSqlDAO(connection);
 	}
