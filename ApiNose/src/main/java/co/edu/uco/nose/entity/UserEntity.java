@@ -2,7 +2,6 @@ package co.edu.uco.nose.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.nose.crosscuting.helper.BooleanHelper;
 import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
@@ -20,7 +19,9 @@ public final class UserEntity {
 	private String email;
 	private String cellPhoneNumber;
 	private boolean emailConfirmed;
+	private boolean emailConfirmedDefaultValue;
 	private boolean cellPhoneNumberConfirmed;
+	private boolean cellPhoneNumberConfirmedDefaultValue;
 	
 	public UserEntity() {
 		setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -33,8 +34,10 @@ public final class UserEntity {
 		setResidenceCity(CityEntity.getDefaultValue());
 		setEmail(TextHelper.getDefault());
 		setCellPhoneNumber(TextHelper.getDefault());
-		setEmailConfirmed(BooleanHelper.getDefault());
-		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
+		setCellPhoneNumberConfirmed(false);
+		setCellPhoneNumberConfirmedDefaultValue(true);
+		setEmailConfirmed(false);
+		setEmailConfirmedDefaultValue(true);
 	}
 	
 	public UserEntity(final UUID id) {
@@ -48,8 +51,10 @@ public final class UserEntity {
 		setResidenceCity(CityEntity.getDefaultValue());
 		setEmail(TextHelper.getDefault());
 		setCellPhoneNumber(TextHelper.getDefault());
-		setEmailConfirmed(BooleanHelper.getDefault());
-		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
+		setCellPhoneNumberConfirmed(false);
+		setCellPhoneNumberConfirmedDefaultValue(true);
+		setEmailConfirmed(false);
+		setEmailConfirmedDefaultValue(true);
 	}
 	
 	public UserEntity(final UUID id, final IdentificationTypeEntity identificationType, final String identificationNumber,
@@ -163,7 +168,8 @@ public final class UserEntity {
 	}
 	
 	public void setEmailConfirmed(final boolean emailConfirmed) {
-		this.emailConfirmed = BooleanHelper.getDefault(emailConfirmed);
+		this.emailConfirmed = emailConfirmed;
+		setEmailConfirmedDefaultValue(false);
 	}
 	
 	public boolean isCellPhoneNumberConfirmed() {
@@ -171,7 +177,24 @@ public final class UserEntity {
 	}
 	
 	public void setCellPhoneNumberConfirmed(final boolean cellPhoneNumberConfirmed) {
-		this.cellPhoneNumberConfirmed = BooleanHelper.getDefault(cellPhoneNumberConfirmed);
+		this.cellPhoneNumberConfirmed = cellPhoneNumberConfirmed;
+		setCellPhoneNumberConfirmedDefaultValue(false);
+	}
+	
+	public boolean isEmailConfirmedDefaultValue() {
+		return emailConfirmedDefaultValue;
+	}
+
+	private void setEmailConfirmedDefaultValue(boolean emailConfirmedDefaultValue) {
+		this.emailConfirmedDefaultValue = emailConfirmedDefaultValue;
+	}
+
+	public boolean isCellPhoneNumberConfirmedDefaultValue() {
+		return cellPhoneNumberConfirmedDefaultValue;
+	}
+
+	private void setCellPhoneNumberConfirmedDefaultValue(boolean cellPhoneNumberConfirmedDefaultValue) {
+		this.cellPhoneNumberConfirmedDefaultValue = cellPhoneNumberConfirmedDefaultValue;
 	}
 
 }

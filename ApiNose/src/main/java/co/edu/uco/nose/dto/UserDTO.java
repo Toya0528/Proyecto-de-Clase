@@ -2,7 +2,6 @@ package co.edu.uco.nose.dto;
 
 import java.util.UUID;
 
-import co.edu.uco.nose.crosscuting.helper.BooleanHelper;
 import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
@@ -20,7 +19,9 @@ public final class UserDTO {
 	private String email;
 	private String cellPhoneNumber;
 	private boolean emailConfirmed;
+	private boolean emailConfirmedDefaultValue;
 	private boolean cellPhoneNumberConfirmed;
+	private boolean cellPhoneNumberConfirmedDefaultValue;
 	
 	public UserDTO() {
 		setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -33,8 +34,10 @@ public final class UserDTO {
 		setResidenceCity(CityDTO.getDefaultValue());
 		setEmail(TextHelper.getDefault());
 		setCellPhoneNumber(TextHelper.getDefault());
-		setEmailConfirmed(BooleanHelper.getDefault());
-		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
+		setCellPhoneNumberConfirmed(false);
+		setCellPhoneNumberConfirmedDefaultValue(true);
+		setEmailConfirmed(false);
+		setEmailConfirmedDefaultValue(true);
 	}
 	
 	public UserDTO(final UUID id) {
@@ -48,8 +51,10 @@ public final class UserDTO {
 		setResidenceCity(CityDTO.getDefaultValue());
 		setEmail(TextHelper.getDefault());
 		setCellPhoneNumber(TextHelper.getDefault());
-		setEmailConfirmed(BooleanHelper.getDefault());
-		setCellPhoneNumberConfirmed(BooleanHelper.getDefault());
+		setCellPhoneNumberConfirmed(false);
+		setCellPhoneNumberConfirmedDefaultValue(true);
+		setEmailConfirmed(false);
+		setEmailConfirmedDefaultValue(true);
 	}
 	
 	public UserDTO(final UUID id, final IdentificationTypeDTO identificationType, 
@@ -165,7 +170,8 @@ public final class UserDTO {
 	}
 	
 	public void setEmailConfirmed(final boolean emailConfirmed) {
-		this.emailConfirmed = BooleanHelper.getDefault(emailConfirmed);
+		this.emailConfirmed = emailConfirmed;
+		setEmailConfirmedDefaultValue(false);
 	}
 	
 	public boolean isCellPhoneNumberConfirmed() {
@@ -173,7 +179,24 @@ public final class UserDTO {
 	}
 	
 	public void setCellPhoneNumberConfirmed(final boolean cellPhoneNumberConfirmed) {
-		this.cellPhoneNumberConfirmed = BooleanHelper.getDefault(cellPhoneNumberConfirmed);
+		this.cellPhoneNumberConfirmed = cellPhoneNumberConfirmed;
+		setCellPhoneNumberConfirmedDefaultValue(false);
+	}
+	
+	public boolean isEmailConfirmedDefaultValue() {
+		return emailConfirmedDefaultValue;
+	}
+
+	private void setEmailConfirmedDefaultValue(final boolean emailConfirmedDefaultValue) {
+		this.emailConfirmedDefaultValue = emailConfirmedDefaultValue;
+	}
+
+	public boolean isCellPhoneNumberConfirmedDefaultValue() {
+		return cellPhoneNumberConfirmedDefaultValue;
+	}
+
+	private void setCellPhoneNumberConfirmedDefaultValue(final boolean cellPhoneNumberConfirmedDefaultValue) {
+		this.cellPhoneNumberConfirmedDefaultValue = cellPhoneNumberConfirmedDefaultValue;
 	}
 
 }
