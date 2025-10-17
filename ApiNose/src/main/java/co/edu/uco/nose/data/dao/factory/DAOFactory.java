@@ -24,8 +24,8 @@ public abstract class DAOFactory {
 			return new PostgresqlDAOFactory();
 		}
 		default:
-			var userMessage = "Factoria no iniciada";
-			var technicalMessage = "Factotoria no validada";
+			var userMessage = MessagesEnum.USER_ERROR_FACTORY_NOT_INITIALIZED.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_FACTORY_NOT_VALIDATED.getContent();
 			throw NoseException.create(userMessage, technicalMessage);
 		}
 	}
@@ -95,7 +95,7 @@ public abstract class DAOFactory {
 			connection.close();
 		}catch(final SQLException exception){
 			 var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
-			 var technicalMessage = MessagesEnum.TECHNINAL_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
+			 var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
 			 throw NoseException.create(exception,userMessage,technicalMessage);
 		}catch(final Exception exception) {
 			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS.getContent();
