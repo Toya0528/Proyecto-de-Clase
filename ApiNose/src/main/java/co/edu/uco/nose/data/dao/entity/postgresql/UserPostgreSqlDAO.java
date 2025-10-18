@@ -21,7 +21,6 @@ import co.edu.uco.nose.entity.UserEntity;
 
 public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 	
-	
 	public UserPostgreSqlDAO(final Connection connection) {
 		super(connection);
 	}
@@ -32,8 +31,9 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 
 		final var sql= new StringBuilder();
-		sql.append("INSERT INTO Usuario(id, tipoIdentificacion, numeroIdentificacion, primerNombre, segundoNombre, primerApellido, segundoApellido, ciudadResidencia, correoElectronico, numeroTelefonoMovil, correoElectronicoConfirmado, numeroTelefonoMovilConfirmado) ");
-		sql.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
+		sql.append("INSERT INTO \"Usuario\" ");
+		sql.append("(id, tipoIdentificacion, numeroIdentificacion, primerNombre, segundoNombre, primerApellido, segundoApellido, ciudadResidencia, correoElectronico, numeroTelefonoMovil, correoElectronicoConfirmado, numeroTelefonoMovilConfirmado) ");
+		sql.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 			
@@ -152,7 +152,7 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 	}
 
 	@Override
-	public List<UserEntity> findByFilter(UserEntity filterEntity) {
+	public List<UserEntity> findByFilter(final UserEntity filterEntity) {
 		
 		final var users = new ArrayList<UserEntity>();
 	    final var sql = new StringBuilder();
@@ -176,17 +176,39 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 	    sql.append("  u.numeroTelefonoMovil, ");
 	    sql.append("  u.correoElectronicoConfirmado, ");
 	    sql.append("  u.numeroTelefonoMovilConfirmado ");
-	    sql.append("FROM Usuario AS u ");
-	    sql.append("INNER JOIN TipoIdentificacion AS ti ");
-	    sql.append("  ON u.tipoIdentificacion = ti.id ");
-	    sql.append("INNER JOIN Ciudad AS c ");
-	    sql.append("  ON u.ciudadResidencia = c.id ");
-	    sql.append("INNER JOIN Departamento AS d ");
-	    sql.append("  ON c.departamento = d.id ");
-	    sql.append("INNER JOIN Pais AS p ");
-	    sql.append("  ON d.pais = p.id;");
+	    sql.append("FROM \"Usuario\" AS u ");
+	    sql.append("INNER JOIN \"TipoIdentificacion\" AS ti ON u.tipoIdentificacion = ti.id ");
+	    sql.append("INNER JOIN \"Ciudad\" AS c ON u.ciudadResidencia = c.id ");
+	    sql.append("INNER JOIN \"Departamento\" AS d ON c.departamento = d.id ");
+	    sql.append("INNER JOIN \"Pais\" AS p ON d.pais = p.id ");
+	    sql.append("WHERE 1=1 ");
+	    
+	    final var parameters = new ArrayList<Object>();
+
+	    if (filterEntity != null) {
+	        if (filterEntity.getId() != null) {
+	            sql.append("AND u.id = ? ");
+	            parameters.add(filterEntity.getId());
+	        }
+	        if (filterEntity.getIdentificationNumber() != null && !filterEntity.getIdentificationNumber().isBlank()) {
+	            sql.append("AND u.numeroIdentificacion = ? ");
+	            parameters.add(filterEntity.getIdentificationNumber());
+	        }
+	        if (filterEntity.getFirstName() != null && !filterEntity.getFirstName().isBlank()) {
+	            sql.append("AND u.primerNombre ILIKE ? ");
+	            parameters.add("%" + filterEntity.getFirstName() + "%");
+	        }
+	        if (filterEntity.getEmail() != null && !filterEntity.getEmail().isBlank()) {
+	            sql.append("AND u.correoElectronico ILIKE ? ");
+	            parameters.add("%" + filterEntity.getEmail() + "%");
+	        }
+	    }
 
 	    try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
+	    	
+	    	for (int i = 0; i < parameters.size(); i++) {
+	            preparedStatement.setObject(i + 1, parameters.get(i));
+	        }
 
 	        try (var resultSet = preparedStatement.executeQuery()) {
 	            while (resultSet.next()) {
@@ -229,18 +251,17 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 
 	    } catch (final SQLException exception) {
 	        var userMessage = "Se presentó un problema tratando de consultar los usuarios. Intente de nuevo.";
-	        var technicalMessage = "Error SQL al ejecutar findAll: " + exception.getMessage();
+	        var technicalMessage = "Error SQL al ejecutar findByFilter: " + exception.getMessage();
 	        throw NoseException.create(exception, userMessage, technicalMessage);
 
 	    } catch (final Exception exception) {
 	        var userMessage = "Se presentó un error inesperado tratando de consultar los usuarios.";
-	        var technicalMessage = "Error inesperado en findAll: " + exception.getMessage();
+	        var technicalMessage = "Error inesperado en findByFilter: " + exception.getMessage();
 	        throw NoseException.create(exception, userMessage, technicalMessage);
 	    }
 
 	    return users;
 	}
-
 	
 	public UserEntity findById(final UUID id) {
 		
@@ -274,8 +295,8 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 		sql.append("INNER JOIN \"Departamento\" AS d ");
 		sql.append("  ON c.departamento = d.id ");
 		sql.append("INNER JOIN \"Pais\" AS p ");
-		sql.append("  ON d.pais = p.id;");
-		sql.append("WHERE u.id = ? ");
+		sql.append("  ON d.pais = p.id ");
+		sql.append("WHERE u.id = ?;");
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 			
@@ -340,18 +361,18 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql= new StringBuilder();
-		sql.append("UPDATE Usuario ");
-		sql.append("SET tipoIdentificacion=?");
-		sql.append("primerNombre=?");
-		sql.append("segundoNombre=?");
-		sql.append("primerApellido=?");
-		sql.append("segundoApellido=?");
-		sql.append("ciudadResidencia=?");
-		sql.append("correoElectronico=?");
-		sql.append("numeroTelefonoMovil=?");
-		sql.append("correoElectronicoConfirmado=?");
-		sql.append("numeroTelefonoMovilConfirmado=?");
-		sql.append("WHERE id=?");
+		sql.append("UPDATE \"Usuario\" SET ");
+		sql.append("tipoIdentificacion = ?, ");
+		sql.append("primerNombre = ?, ");
+		sql.append("segundoNombre = ?, ");
+		sql.append("primerApellido = ?, ");
+		sql.append("segundoApellido = ?, ");
+		sql.append("ciudadResidencia = ?, ");
+		sql.append("correoElectronico = ?, ");
+		sql.append("numeroTelefonoMovil = ?, ");
+		sql.append("correoElectronicoConfirmado = ?, ");
+		sql.append("numeroTelefonoMovilConfirmado = ? ");
+		sql.append("WHERE id = ?;");
 		
 	try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 				
