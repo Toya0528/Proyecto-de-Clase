@@ -9,6 +9,7 @@ import co.edu.uco.nose.dto.CityDTO;
 public final class CityDTOAssembler implements DTOAssembler<CityDTO, CityDomain> {
 	
 	private static final DTOAssembler<CityDTO, CityDomain> instance = new CityDTOAssembler();
+	
 	private CityDTOAssembler() {
 		
 	}

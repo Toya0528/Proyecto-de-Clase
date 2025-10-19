@@ -14,16 +14,16 @@ public class StateEntityAssembler implements EntityAssembler<StateEntity, StateD
 	public static EntityAssembler<StateEntity, StateDomain> getStateEntityAssembler() {
 		return instance;
 	}
-	
+
 	@Override
-	public StateEntity toDomain(StateDomain domain) {
+	public StateEntity toEntity(StateDomain domain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
-	public StateDomain toEntity(StateEntity entity) {
+	public StateDomain toDomain(StateEntity entity) {
 		// TODO Auto-generated method stub
 		return null;
-		}
+	}
 }

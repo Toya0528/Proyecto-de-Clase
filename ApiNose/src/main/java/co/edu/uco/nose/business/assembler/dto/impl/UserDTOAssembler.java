@@ -10,6 +10,7 @@ import co.edu.uco.nose.dto.UserDTO;
 public class UserDTOAssembler implements DTOAssembler<UserDTO, UserDomain>{
 	
 	private static final DTOAssembler<UserDTO, UserDomain> instance = new UserDTOAssembler();
+	
 	private UserDTOAssembler() {
 		
 	}

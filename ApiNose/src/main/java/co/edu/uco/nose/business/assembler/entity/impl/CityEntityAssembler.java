@@ -14,15 +14,15 @@ public class CityEntityAssembler implements EntityAssembler<CityEntity, CityDoma
 	public static EntityAssembler<CityEntity, CityDomain> getCityEntityAssembler() {
 		return instance;
 	}
-	
+
 	@Override
-	public CityEntity toDomain(final CityDomain domain) {
+	public CityEntity toEntity(CityDomain domain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CityDomain toEntity(final CityEntity entity) {
+	public CityDomain toDomain(CityEntity entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

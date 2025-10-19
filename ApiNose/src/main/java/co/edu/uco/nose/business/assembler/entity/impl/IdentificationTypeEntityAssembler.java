@@ -14,15 +14,15 @@ public class IdentificationTypeEntityAssembler implements EntityAssembler<Identi
 	public static EntityAssembler<IdentificationTypeEntity, IdentificationTypeDomain> getIdentificationTypeEntityAssembler() {
 		return instance;
 	}
-	
+
 	@Override
-	public IdentificationTypeEntity toDomain(IdentificationTypeDomain domain) {
+	public IdentificationTypeEntity toEntity(IdentificationTypeDomain domain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IdentificationTypeDomain toEntity(IdentificationTypeEntity entity) {
+	public IdentificationTypeDomain toDomain(IdentificationTypeEntity entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

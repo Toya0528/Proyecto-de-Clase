@@ -15,15 +15,15 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
         return instance;
 
     }
-	
+
 	@Override
-	public UserEntity toDomain(UserDomain domain) {
+	public UserEntity toEntity(UserDomain domain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserDomain toEntity(UserEntity entity) {
+	public UserDomain toDomain(UserEntity entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

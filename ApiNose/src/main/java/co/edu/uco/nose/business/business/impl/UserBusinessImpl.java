@@ -8,7 +8,6 @@ import co.edu.uco.nose.business.business.UserBusiness;
 import co.edu.uco.nose.business.domain.UserDomain;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 import co.edu.uco.nose.data.dao.factory.DAOFactory;
-import co.edu.uco.nose.entity.UserEntity;
 
 public final class UserBusinessImpl implements UserBusiness{
 	
