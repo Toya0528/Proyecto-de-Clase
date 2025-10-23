@@ -11,7 +11,6 @@ public final class CountryEntity {
 	private UUID id;
 	private String name;
 
-
 	public CountryEntity() {
 		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());

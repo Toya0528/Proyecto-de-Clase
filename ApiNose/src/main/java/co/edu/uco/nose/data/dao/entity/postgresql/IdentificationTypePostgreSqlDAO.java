@@ -28,8 +28,8 @@ public final class IdentificationTypePostgreSqlDAO extends SqlConnection impleme
 		
 		sql.append("SELECT ");
 		sql.append("  t.id, ");
-		sql.append("  t.nombre, ");
-		sql.append("  from \"Tipolidentificacion\" as t ");
+		sql.append("  t.nombre ");
+		sql.append("FROM \"TipoIdentificacion\" AS t ");
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 			
@@ -50,7 +50,7 @@ public final class IdentificationTypePostgreSqlDAO extends SqlConnection impleme
 
 		} catch (final SQLException exception) {
 			var userMessage = MessagesEnum.USER_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE.getContent();
-			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE + exception.getMessage();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE.getContent() + exception.getMessage();
 			throw NoseException.create(exception, userMessage, technicalMessage);
 		}catch(final Exception exception) {
 			var userMessage = MessagesEnum.USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_IDENTIFICATIONTYPE.getContent();
@@ -74,8 +74,8 @@ public final class IdentificationTypePostgreSqlDAO extends SqlConnection impleme
 		
 		sql.append("SELECT ");
 		sql.append("  t.id, ");
-		sql.append("  t.nombre, ");
-		sql.append("  from \"Tipolidentificacion\" as t ");
+		sql.append("  t.nombre ");
+		sql.append("  from \"TipoIdentificacion\" as t ");
 		sql.append("  where t.id = ? ");
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {

@@ -96,19 +96,26 @@ public enum MessagesEnum {
 	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_DELETING_USER("Error inesperado durante la operación de eliminación de un usuario", 
 			"Se ha presentado un problema inesperado durante la operación de eliminación de un usuario. No fue una SQLException, sino un error no controlado en el proceso de eliminación."),
 	
-	USER_ERROR_SQL_EXCEPTION_FINDING_USER("Error durante la consulta de la información de un usuario", "Se ha presentado un problema tratando de consultar la información de un usuario. Por favor, intente de nuevo. "
-			+ "Si el problema persiste. Por favor, contacte al administrador de la aplicación"),
+	USER_ERROR_SQL_EXCEPTION_FINDING_USER_WHILE_EXECUTION("Error durante la consulta de la información de un usuario", 
+			"Se ha presentado un problema tratando de ejecutar la consulta de la información de un usuario por favor intente de nuevo. Si el problema persiste por favor contacte al administrador del sistema"),
 	
-	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_USER("Error SQL durante la operación de consulta de la información de un usuario", "Se ha presentado un problema de tipo SQLException durante la operación de consulta de la información de un usuario."),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_USER_WHILE_EXECUTION("Error SQL durante la operación de consulta de la información de un usuario", 
+			"Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de un usuario."),
 	
-	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER("Error inesperado durante la consulta de la información de un usuario", "Se ha presentado un problema inesperado durante la operación de consultar la información de un usuario. "
-			+ "Por favor, intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER_WHILE_EXECUTION("Error inesperado durante la consulta de la información de un usuario", 
+			"Se ha presentado un problema inesperado durante la ejecución operación de consulta de la información de un usuario. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
 	
-	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER("Error inesperado durante la operación de consulta de la información de un usuario", "Se ha presentado un problema inesperado durante la operación de consulta de la información de un usuario. "
-			+ "No fue una SQLException, sino un error no controlado en el proceso de consulta."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER_WHILE_EXECUTION("Error inesperado durante la operación de consulta de la información de un usuario", 
+			"Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de un usuario. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_USER_WHILE_PREPARATION("Error SQL durante la operación de consulta de la información de un usuario", 
+			"Se ha presentado un problema de tipo SQLException durante la preparacion de la sentencia sql para llevar a cabo la operación de consulta de la información de un usuario."),
+	
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER_WHILE_PREPARATION("Error inesperado durante la operación de consulta de la información de un usuario", 
+			"Se ha presentado un problema inesperado durante la preparacipon de la sentencia sql de la operación de consulta de la información de un usuario. No fue una SQLException, sino un error no controlado en el proceso de registro."),
 	
 	USER_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE("Error durante la consulta de la información de un tipo de documento", "Se ha presentado un problema tratando de consultar la información de un tipo de documento por favor intente de nuevo. "
-			+ "Si el problema persiste, por favor, contacte al administrador del sistema"),
+			+ "Si el problema persiste, por favor, contacte con al administrador del sistema"),
 	
 	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE("Error SQL durante la operación de consulta de la información de un tipo de documento", 
 			"Se ha presentado un problema de tipo SQLException durante la operación de consulta de la información de un tipo de documento."),
@@ -151,7 +158,34 @@ public enum MessagesEnum {
 			+ "Por favor, intente de nuevo y si el problema persiste contacte al administrador del sistema."),
 	
 	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_CITY("Error inesperado durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema inesperado durante la operación de consulta de la información de una ciudad. "
-			+ "No fue una SQLException, sino un error no controlado en el proceso de consulta.");
+			+ "No fue una SQLException, sino un error no controlado en el proceso de consulta."),
+	
+	USER_ERROR_WHILE_REGISTERING_USER_NULL_USER("La información del usuario es obligatoria", "No es posible registrar al usuario, ya que no se envió la informacion"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_NULL_USER("UserDomain fue enviado como nulo", "No es posible registrar al usuario, ya que este fue enviado como null"),
+	USER_ERROR_WHILE_REGISTERING_USER_NULL_IDENTIFICATION_TYPE("La información del tipo de documento del usuario es obligatoria", "No es posible registrar al usuario, ya que no se envió la informacion de su tipo de documento"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_NULL_IDENTIFICATION_TYPE("identificationType fue enviado como nulo", "No es posible registrar al usuario, ya que su tipo de documento fue enviado como null"),
+	USER_ERROR_WHILE_REGISTERING_USER_NULL_CITY("La información de la ciudad del usuario es obligatoria", "No es posible registrar al usuario, ya que no se envió la informacion de su ciudad de residencia"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_NULL_CITY("residenceCity fue enviado como nulo", "No es posible registrar al usuario, ya que su ciudad de residencia fue enviado como null"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_IDENTIFICATION_NUMBER("El número de documento no es válido", "No es posible registrar al usuario, ya que el número de documento no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_IDENTIFICATION_NUMBER("El número de documento no es válido", "No es posible registrar al usuario, ya que EL número de documento fue enviado vacío o supera los 25 caracteres"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_FIRST_NAME("El primer nombre del usuario no es válido", "No es posible registrar al usuario, ya que el primer nombre no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_FIRST_NAME("El primer nombre del usuario no es válido", "No es posible registrar al usuario, ya que su primer nombre fue enviado vacío o supera los 20 caracteres"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_MIDDLE_NAME("El segundo nombre del usuario no es válido", "No es posible registrar al usuario, ya que su segundo nombre no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_MIDDLE_NAME("El segundo nombre del usuario no es válido", "No es posible registrar al usuario, ya que su segundo nombre fue enviado vacío o supera los 20 caracteres"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_LAST_NAME("El primer apellido del usuario no es válido", "No es posible registrar al usuario, ya que el primer apellido del usuario no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_lAST_NAME("El primer apellido del usuario no es válido", "No es posible registrar al usuario, ya que primer apellido del usuario fue enviado vacío o supera los 20 caracteres"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_SECOND_LAST_NAME("El segundo apellido del usuario no es válido", "No es posible registrar al usuario, ya que el segundo apellido del usuario no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_SECOND_lAST_NAME("El segundo apellido del usuario no es válido", "No es posible registrar al usuario, ya que el segundo apellido del usuario fue enviado vacío o supera los 20 caracteres"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_EMAIL("El email del usuario no es válido", "No es posible registrar al usuario, ya que su email no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_EMAIL("El email del usuario no es válido", "No es posible registrar al usuario, ya que su email fue enviado vacío, supera los 250 caracteres o no cumple el formato estipulado"),
+	USER_ERROR_WHILE_REGISTERING_USER_INVALID_CELL_PHONE_NUMBER("El teléfono del usuario no es válido", "No es posible registrar al usuario, ya que el teléfono del usuario no cumple con los parametros estipulados"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_INVALID_CELL_PHONE_NUMBER("El teléfono del usuario no es válido", "No es posible registrar al usuario, ya que el teléfono del usuario fue enviado vacío, no cumple el formato estipulado o supera los 20 caracteres"),
+	USER_ERROR_WHILE_REGISTERING_USER_DUPLICATED_CELL_PHONE_NUMBER("El número de teléfono ya se encuentra registrado", "No es posible registrar al usuario, ya que el teléfono ingresado por el usuario ya se encuentra en uso"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_DUPLICATED_CELL_PHONE_NUMBER("El número de teléfono ya se encuentra registrado", "No es posible registrar al usuario, ya que el teléfono ingresado por el uusario ya se encuentra registrado dentro de la fuente de datos"),
+	USER_ERROR_WHILE_REGISTERING_USER_DUPLICATED_IDENTIFICATION("El tipo y número de documento del usuario ya se encuentra registrado", "No es posible registrar al usuario, ya que el tipo de documento y el número de documento ingresado por el usuario ya se encuentra en uso"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_DUPLICATED_IDENTIFICATION("El tipo y número de documento del usuario ya se encuentra registrado", "No es posible registrar al usuario, ya que el tipo y número de documento del usuario ya se encuentra registrado dentro de la fuente de datos"),
+	USER_ERROR_WHILE_REGISTERING_USER_DUPLICATED_EMAIL("El correo electrónico ya se encuentra registrado", "No es posible registrar al usuario, ya que el correo electrónico ingresado por el usuario ya se encuentra en uso"),
+	TECHNICAL_ERROR_WHILE_REGISTERING_USER_DUPLICATED_EMAIL("El correo electrónico ya se encuentra registrado", "No es posible registrar al usuario, ya que el correo electrónico ingresado por el uusario ya se encuentra registrado dentro de la fuente de datos");
 	
 	private String title;
 	private String content;

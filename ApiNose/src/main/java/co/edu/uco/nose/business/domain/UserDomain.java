@@ -6,7 +6,7 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.TextHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 
-public class UserDomain extends Domain {
+public final class UserDomain extends Domain {
 	 
 	private IdentificationTypeDomain identificationType;
 	private String identificationNumber;
@@ -22,7 +22,7 @@ public class UserDomain extends Domain {
 	private boolean cellPhoneNumberConfirmed;
 	private boolean cellPhoneNumberConfirmedDefaultValue;
 	
-	public UserDomain() {
+	UserDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setIdentificationType(IdentificationTypeDomain.getDefaultValue());
 		setIdentificationNumber(TextHelper.getDefault());;
@@ -74,7 +74,7 @@ public class UserDomain extends Domain {
 		setEmailConfirmed(emailConfirmed);
 	}
 	
-	static UserDomain getDefaultValue() {
+	public static UserDomain getDefaultValue() {
 		return new UserDomain();
 	}
 	
@@ -87,7 +87,7 @@ public class UserDomain extends Domain {
 	}
 	
 	public void setIdentificationType(final IdentificationTypeDomain identificationType) {
-		this.identificationType = ObjectHelper.getDefault(identificationType, IdentificationTypeDomain.getDefaultValue());
+		this.identificationType = identificationType;
 	}
 	
 	public String getIdentificationNumber() {
@@ -135,7 +135,7 @@ public class UserDomain extends Domain {
 	}
 	
 	public void setResidenceCity(final CityDomain residenceCity) {
-		this.residenceCity = ObjectHelper.getDefault(residenceCity, CityDomain.getDefaultValue());
+		this.residenceCity = residenceCity;
 	}
 	
 	public String getEmail() {

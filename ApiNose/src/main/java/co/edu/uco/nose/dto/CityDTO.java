@@ -43,7 +43,7 @@ public final class CityDTO {
 	}
 
 	public void setId(final UUID id) {
-		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
+		this.id = id;
 	}
 
 	public String getName() {

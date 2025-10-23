@@ -1,5 +1,6 @@
 package co.edu.uco.nose.business.assembler.dto.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uco.nose.business.assembler.dto.DTOAssembler;
@@ -37,8 +38,13 @@ public final class StateDTOAssembler implements DTOAssembler<StateDTO, StateDoma
 
 	@Override
 	public List<StateDTO> toDTO(List<StateDomain> domainList) {
-		// TODO Auto-generated method stub
-		return null;
+		var stateDtoList = new ArrayList<StateDTO>();
+
+        for (var stateDomain : domainList) {
+            stateDtoList.add(toDTO(stateDomain));
+        }
+
+        return stateDtoList;
 	}
 
 }

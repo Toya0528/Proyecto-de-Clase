@@ -88,7 +88,11 @@ public final class UserEntity {
 	}
 
 	public void setId(final UUID id) {
-		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
+		if (id == null) {
+	        this.id = UUIDHelper.getUUIDHelper().getDefault(); 
+	    } else {
+	        this.id = id;
+	    }
 	}
 
 	public IdentificationTypeEntity getIdentificationType() {

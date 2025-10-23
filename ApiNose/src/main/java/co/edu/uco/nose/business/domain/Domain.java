@@ -17,6 +17,10 @@ class Domain {
 	}
 
 	public void setId(UUID id) {
-		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
+		if (id == null) {
+	        this.id = UUIDHelper.getUUIDHelper().getDefault();
+	    } else {
+	        this.id = id;
+	    }
 	}
 }

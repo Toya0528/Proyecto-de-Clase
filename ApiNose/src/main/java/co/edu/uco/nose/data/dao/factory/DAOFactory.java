@@ -43,7 +43,9 @@ public abstract class DAOFactory {
 	protected abstract void openConnection();
 	
 	public final void initTransaction() {
+		
 		SqlConnectionHelper.ensureTransactionIsNotStarted(connection);
+
 		try {
 			connection.setAutoCommit(false);
 		}catch(final SQLException exception) {

@@ -67,31 +67,30 @@ public final class SqlConnectionHelper {
             throw NoseException.create(exception, userMessage, technicalMessage);
         }
     }
-	
+
 	public static void ensureTransactionIsNotStarted(final Connection connection) {
 
-        ensureConnectionIsOpen(connection);
+	    ensureConnectionIsOpen(connection);
 
-        try {
-            if (!connection.getAutoCommit()) {
-                var userMessage = MessagesEnum.USER_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
-                var technicalMessage = MessagesEnum.TECHNICAL_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
-                throw NoseException.create(userMessage, technicalMessage);
-            }
-        } catch (final SQLException exception) {
-            var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
-                    .getContent();
-            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED
-                    .getContent();
-            throw NoseException.create(exception, userMessage, technicalMessage);
-        } catch (final Exception exception) {
-            var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED
-                    .getContent();
-            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_NOT_STARTED
-                    .getContent();
-            throw NoseException.create(exception, userMessage, technicalMessage);
-            }
-        
-		}
+	    try {
+	        boolean autoCommitStatus = connection.getAutoCommit();
+
+	        if (!autoCommitStatus) {
+	            var userMessage = MessagesEnum.USER_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
+	            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_TRANSACTION_IS_NOT_STARTED.getContent();
+	            throw NoseException.create(userMessage, technicalMessage);
+	        }
+
+	    } catch (SQLException exception) {
+	        var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED.getContent();
+	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED.getContent();
+	        throw NoseException.create(exception, userMessage, technicalMessage);
+	    } catch (Exception exception) {
+	        var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_STARTED.getContent();
+	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_NOT_STARTED.getContent();
+	        throw NoseException.create(exception, userMessage, technicalMessage);
+	    }
+	}
+
 	
 }

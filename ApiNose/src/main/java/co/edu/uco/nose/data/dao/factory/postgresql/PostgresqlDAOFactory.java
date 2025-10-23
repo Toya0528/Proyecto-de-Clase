@@ -12,6 +12,7 @@ import co.edu.uco.nose.data.dao.entity.StateDAO;
 import co.edu.uco.nose.data.dao.entity.UserDAO;
 import co.edu.uco.nose.data.dao.entity.postgresql.CityPostgreSqlDAO;
 import co.edu.uco.nose.data.dao.entity.postgresql.CountryPostgreSqlDAO;
+import co.edu.uco.nose.data.dao.entity.postgresql.IdentificationTypePostgreSqlDAO;
 import co.edu.uco.nose.data.dao.entity.postgresql.StatePostgreSqlDAO;
 import co.edu.uco.nose.data.dao.entity.postgresql.UserPostgreSqlDAO;
 import co.edu.uco.nose.data.dao.factory.DAOFactory;
@@ -26,11 +27,12 @@ public final class PostgresqlDAOFactory extends DAOFactory {
 	protected void openConnection() {
 		
 		try {
-			this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/NoseDB", "postgres", "Toya0727");
+			DriverManager.setLoginTimeout(5);
+			this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/NoseDB?connectTimeout=5&socketTimeout=10", "postgres", "Toya0727");
 		} catch (final SQLException exception) {
 			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_CONNECTION_STATUS.getContent();
-			throw NoseException.create(userMessage, technicalMessage);
+			throw NoseException.create(exception, userMessage, technicalMessage);
 		}catch(final Exception exception) {
 			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS.getContent();
@@ -61,8 +63,7 @@ public final class PostgresqlDAOFactory extends DAOFactory {
 
 	@Override
 	public IdentificationTypeDAO getIdTypeDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new IdentificationTypePostgreSqlDAO(connection);
 	}
 
 }

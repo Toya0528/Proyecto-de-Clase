@@ -1,9 +1,12 @@
 package co.edu.uco.nose.business.assembler.dto.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uco.nose.business.assembler.dto.DTOAssembler;
 import co.edu.uco.nose.business.domain.IdentificationTypeDomain;
+import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
+import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 import co.edu.uco.nose.dto.IdentificationTypeDTO;
 
 public class IdentificationTypeDTOAssembler implements DTOAssembler<IdentificationTypeDTO, IdentificationTypeDomain>{
@@ -20,20 +23,30 @@ public class IdentificationTypeDTOAssembler implements DTOAssembler<Identificati
 	
 	@Override
 	public IdentificationTypeDTO toDTO(final IdentificationTypeDomain domain) {
-		// TODO Auto-generated method stub
-		return null;
+		var domainTmp = ObjectHelper.getDefault(domain, new IdentificationTypeDomain(UUIDHelper.getUUIDHelper().getDefault()));
+		return new IdentificationTypeDTO(domainTmp.getId(), domainTmp.getName());
 	}
 
 	@Override
 	public IdentificationTypeDomain toDomain(final IdentificationTypeDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		if (dto == null) {
+	        return null;
+	    }
+	    return new IdentificationTypeDomain(dto.getId(), dto.getName());
 	}
 
 	@Override
 	public List<IdentificationTypeDTO> toDTO(List<IdentificationTypeDomain> domainList) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var identificationTypeDtoList = new ArrayList<IdentificationTypeDTO>();
+		
+		for (var identificationTypeDomain : domainList) {
+			
+			identificationTypeDtoList.add(toDTO(identificationTypeDomain));
+			
+		}
+		
+		return identificationTypeDtoList;
 	}
 
 }
