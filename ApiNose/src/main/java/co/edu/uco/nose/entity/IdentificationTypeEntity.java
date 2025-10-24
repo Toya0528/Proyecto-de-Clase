@@ -26,11 +26,11 @@ public final class IdentificationTypeEntity {
 		setName(name);
 	}
 	
-	static IdentificationTypeEntity getDefaultValue() {
+	public static IdentificationTypeEntity getDefaultValue() {
 		return new IdentificationTypeEntity();
 	}
 	
-	static IdentificationTypeEntity getDefaultValue(final IdentificationTypeEntity identificationType) {
+	public static IdentificationTypeEntity getDefaultValue(final IdentificationTypeEntity identificationType) {
 		return ObjectHelper.getDefault(identificationType, getDefaultValue());
 	}
 

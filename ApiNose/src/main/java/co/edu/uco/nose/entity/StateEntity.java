@@ -30,11 +30,11 @@ public final class StateEntity {
 		setCountry(country);
 	}
 	
-	static StateEntity getDefaultValue() {
+	public static StateEntity getDefaultValue() {
 		return new StateEntity();
 	}
 	
-	static StateEntity getDefaultValue(final StateEntity state) {
+	public static StateEntity getDefaultValue(final StateEntity state) {
 		return ObjectHelper.getDefault(state, getDefaultValue());
 	}
 

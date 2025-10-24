@@ -30,11 +30,11 @@ public final class StateDTO {
 		setCountry(country);
 	}
 	
-	static StateDTO getDefaultValue() {
+	public static StateDTO getDefaultValue() {
 		return new StateDTO();
 	}
 	
-	static StateDTO getDefaultValue(final StateDTO state) {
+	public static StateDTO getDefaultValue(final StateDTO state) {
 		return ObjectHelper.getDefault(state, getDefaultValue());
 	}
 

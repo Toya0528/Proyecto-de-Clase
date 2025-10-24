@@ -20,17 +20,21 @@ public class TestUserRegistration {
 		//Colocar todos los parametros
 		
 		user.setIdentificationType(new IdentificationTypeDTO(UUID.fromString("44444444-4444-4444-4444-444444444444")));
-        user.setIdentificationNumber("1040873589");                         
-        user.setFirstName("Juan");
-        user.setMiddleName("José");
-        user.setLastName("Montoya");
-        user.setSecondLastName("Duque");
+        user.setIdentificationNumber("1036698451"); //1040 873 589                      
+        user.setFirstName("Estefanía");
+        user.setMiddleName("María");
+        user.setLastName("Tobón");
+        user.setSecondLastName("Tobón");
         user.setResidenceCity(new CityDTO(UUID.fromString("33333333-3333-3333-3333-333333333333")));
-        user.setEmail("juan.montoya3589@uco.net.co");
-        user.setCellPhoneNumber("3052317521");
+        user.setEmail("etobon06@gmail.com");
+        user.setCellPhoneNumber("3052416497");
         user.setEmailConfirmed(false);
         user.setCellPhoneNumberConfirmed(false);
 		
+        System.out.println("🧠 UUID del tipo de identificación en DTO: " + user.getIdentificationType().getId());
+        System.out.println("🏙️ UUID de la ciudad en DTO: " + user.getResidenceCity().getId());
+
+        
 		var facade = new UserFacadeImpl();
 		
 		facade.registerNewUserInformation(user);

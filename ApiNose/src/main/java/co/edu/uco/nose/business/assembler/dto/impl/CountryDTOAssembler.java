@@ -11,8 +11,7 @@ import co.edu.uco.nose.dto.CountryDTO;
 
 public final class CountryDTOAssembler implements DTOAssembler<CountryDTO, CountryDomain> {
 	
-	private static final DTOAssembler<CountryDTO, CountryDomain> instance =
-			new CountryDTOAssembler();
+	private static final DTOAssembler<CountryDTO, CountryDomain> instance = new CountryDTOAssembler();
 	
 	private CountryDTOAssembler() {
 		
@@ -35,7 +34,7 @@ public final class CountryDTOAssembler implements DTOAssembler<CountryDTO, Count
 	}
 
 	@Override
-	public List<CountryDTO> toDTO(List<CountryDomain> domainList) {
+	public List<CountryDTO> toDTO(final List<CountryDomain> domainList) {
 		var countryDtoList = new ArrayList<CountryDTO>();
 		
 		for (var countryDomain : domainList) {

@@ -3,7 +3,6 @@ package co.edu.uco.nose.business.assembler.entity.impl;
 import co.edu.uco.nose.business.assembler.entity.EntityAssembler;
 import co.edu.uco.nose.business.domain.UserDomain;
 import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
-import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 import co.edu.uco.nose.entity.UserEntity;
 
 public final class UserEntityAssembler implements EntityAssembler<UserEntity, UserDomain>{

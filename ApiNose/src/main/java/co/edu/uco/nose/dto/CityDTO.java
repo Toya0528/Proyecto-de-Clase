@@ -30,11 +30,11 @@ public final class CityDTO {
 		setState(state);
 	}
 	
-	static CityDTO getDefaultValue() {
+	public static CityDTO getDefaultValue() {
 		return new CityDTO();
 	}
 	
-	static CityDTO getDefaultValue(final CityDTO city) {
+	public static CityDTO getDefaultValue(final CityDTO city) {
 		return ObjectHelper.getDefault(city, getDefaultValue());
 	}
 
@@ -43,7 +43,7 @@ public final class CityDTO {
 	}
 
 	public void setId(final UUID id) {
-		this.id = id;
+		this.id = (id == null) ? UUIDHelper.getUUIDHelper().getDefault() : id;
 	}
 
 	public String getName() {

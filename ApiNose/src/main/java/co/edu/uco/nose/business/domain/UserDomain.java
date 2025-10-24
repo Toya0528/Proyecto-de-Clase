@@ -56,7 +56,6 @@ public final class UserDomain extends Domain {
 		setEmailConfirmedDefaultValue(true);
 	}
 	
-	
 	public UserDomain(final UUID id, final IdentificationTypeDomain identificationType, final String identificationNumber, final String firstName,
 			final String middleName, final String lastName, final String secondLastName, final CityDomain residenceCity, final String email,
 			final String cellPhoneNumber, final boolean emailConfirmed, final boolean cellPhoneNumberConfirmed) {
@@ -87,7 +86,7 @@ public final class UserDomain extends Domain {
 	}
 	
 	public void setIdentificationType(final IdentificationTypeDomain identificationType) {
-		this.identificationType = identificationType;
+		this.identificationType = ObjectHelper.getDefault(identificationType, IdentificationTypeDomain.getDefaultValue());
 	}
 	
 	public String getIdentificationNumber() {
@@ -135,7 +134,7 @@ public final class UserDomain extends Domain {
 	}
 	
 	public void setResidenceCity(final CityDomain residenceCity) {
-		this.residenceCity = residenceCity;
+		this.residenceCity = ObjectHelper.getDefault(residenceCity, CityDomain.getDefaultValue());
 	}
 	
 	public String getEmail() {

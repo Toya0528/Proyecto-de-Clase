@@ -26,11 +26,11 @@ public final class CountryDTO {
 		setName(name);
 	}
 	
-	static CountryDTO getDefaultValue() {
+	public static CountryDTO getDefaultValue() {
 		return new CountryDTO();
 	}
 	
-	static CountryDTO getDefaultValue(final CountryDTO country) {
+	public static CountryDTO getDefaultValue(final CountryDTO country) {
 		return ObjectHelper.getDefault(country, getDefaultValue());
 	}
 	

@@ -28,7 +28,7 @@ public final class PostgresqlDAOFactory extends DAOFactory {
 		
 		try {
 			DriverManager.setLoginTimeout(5);
-			this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/NoseDB?connectTimeout=5&socketTimeout=10", "postgres", "Toya0727");
+			this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/ApiNoSeDB?connectTimeout=5&socketTimeout=10", "postgres", "Toya0727");
 		} catch (final SQLException exception) {
 			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_CONNECTION_STATUS.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_CONNECTION_STATUS.getContent();

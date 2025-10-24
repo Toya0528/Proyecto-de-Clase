@@ -9,7 +9,7 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 import co.edu.uco.nose.dto.IdentificationTypeDTO;
 
-public class IdentificationTypeDTOAssembler implements DTOAssembler<IdentificationTypeDTO, IdentificationTypeDomain>{
+public final class IdentificationTypeDTOAssembler implements DTOAssembler<IdentificationTypeDTO, IdentificationTypeDomain>{
 	
 	private static final DTOAssembler<IdentificationTypeDTO, IdentificationTypeDomain> instance = new IdentificationTypeDTOAssembler();
 	
@@ -29,10 +29,8 @@ public class IdentificationTypeDTOAssembler implements DTOAssembler<Identificati
 
 	@Override
 	public IdentificationTypeDomain toDomain(final IdentificationTypeDTO dto) {
-		if (dto == null) {
-	        return null;
-	    }
-	    return new IdentificationTypeDomain(dto.getId(), dto.getName());
+		var dtoTmp = ObjectHelper.getDefault(dto, new IdentificationTypeDTO());
+		return new IdentificationTypeDomain(dtoTmp.getId(), dtoTmp.getName());
 	}
 
 	@Override

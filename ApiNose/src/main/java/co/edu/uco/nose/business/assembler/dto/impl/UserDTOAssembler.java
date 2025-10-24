@@ -9,7 +9,7 @@ import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
 import co.edu.uco.nose.crosscuting.helper.UUIDHelper;
 import co.edu.uco.nose.dto.UserDTO;
 
-public class UserDTOAssembler implements DTOAssembler<UserDTO, UserDomain>{
+public final class UserDTOAssembler implements DTOAssembler<UserDTO, UserDomain>{
 	
 	private static final DTOAssembler<UserDTO, UserDomain> instance = new UserDTOAssembler();
 	
@@ -36,32 +36,30 @@ public class UserDTOAssembler implements DTOAssembler<UserDTO, UserDomain>{
 
 	@Override
 	public UserDomain toDomain(final UserDTO dto) {
-		var dtoTmp = ObjectHelper.getDefault(dto, new UserDTO());
-
-	    var identificationTypeDomainTmp = IdentificationTypeDTOAssembler.getIdentificationTypeDTOAssembler()
-	            .toDomain(dtoTmp.getIdentificationType());
-	    var cityDomainTmp = CityDTOAssembler.getCityDTOAssembler()
-	            .toDomain(dtoTmp.getResidenceCity());
-
-	    // 🧩 Debug: verificar que los UUID vengan desde el DTO
-	    System.out.println("🎯 [DTOAssembler] TipoID desde DTO: " +
-	            (dtoTmp.getIdentificationType() != null ? dtoTmp.getIdentificationType().getId() : "NULO"));
-	    System.out.println("🎯 [DTOAssembler] Ciudad desde DTO: " +
-	            (dtoTmp.getResidenceCity() != null ? dtoTmp.getResidenceCity().getId() : "NULO"));
+		if (dto == null) {
+	        return new UserDomain(UUIDHelper.getUUIDHelper().getDefault());
+	    }
+		
+		var identificationTypeDomainTmp = IdentificationTypeDTOAssembler
+	            .getIdentificationTypeDTOAssembler()
+	            .toDomain(dto.getIdentificationType());
+	    var cityDomainTmp = CityDTOAssembler
+	            .getCityDTOAssembler()
+	            .toDomain(dto.getResidenceCity());
 
 	    return new UserDomain(
-	            dtoTmp.getId(),
+	            dto.getId(),
 	            identificationTypeDomainTmp,
-	            dtoTmp.getIdentificationNumber(),
-	            dtoTmp.getFirstName(),
-	            dtoTmp.getMiddleName(),
-	            dtoTmp.getLastName(),
-	            dtoTmp.getSecondLastName(),
+	            dto.getIdentificationNumber(),
+	            dto.getFirstName(),
+	            dto.getMiddleName(),
+	            dto.getLastName(),
+	            dto.getSecondLastName(),
 	            cityDomainTmp,
-	            dtoTmp.getEmail(),
-	            dtoTmp.getCellPhoneNumber(),
-	            dtoTmp.isEmailConfirmed(),
-	            dtoTmp.isCellPhoneNumberConfirmed()
+	            dto.getEmail(),
+	            dto.getCellPhoneNumber(),
+	            dto.isEmailConfirmed(),
+	            dto.isCellPhoneNumberConfirmed()
 	    );
 	}
 

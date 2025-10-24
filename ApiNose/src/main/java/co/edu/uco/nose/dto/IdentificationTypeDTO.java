@@ -26,11 +26,11 @@ public final class IdentificationTypeDTO {
 		setName(name);
 	}
 	
-	static IdentificationTypeDTO getDefaultValue() {
+	public static IdentificationTypeDTO getDefaultValue() {
 		return new IdentificationTypeDTO();
 	}
 	
-	static IdentificationTypeDTO getDefaultValue(final IdentificationTypeDTO identifiactionType) {
+	public static IdentificationTypeDTO getDefaultValue(final IdentificationTypeDTO identifiactionType) {
 		return ObjectHelper.getDefault(identifiactionType, getDefaultValue());
 	}
 
@@ -39,7 +39,7 @@ public final class IdentificationTypeDTO {
 	}
 
 	public void setId(final UUID id) {
-		this.id = id;
+		this.id = (id == null) ? UUIDHelper.getUUIDHelper().getDefault() : id;
 	}
 
 	public String getName() {

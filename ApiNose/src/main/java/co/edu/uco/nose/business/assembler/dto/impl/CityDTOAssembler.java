@@ -36,7 +36,7 @@ public final class CityDTOAssembler implements DTOAssembler<CityDTO, CityDomain>
 	}
 
 	@Override
-	public List<CityDTO> toDTO(List<CityDomain> domainList) {
+	public List<CityDTO> toDTO(final List<CityDomain> domainList) {
 		var cityDtoList = new ArrayList<CityDTO>();
 
 		for (var cityDomain : domainList) {

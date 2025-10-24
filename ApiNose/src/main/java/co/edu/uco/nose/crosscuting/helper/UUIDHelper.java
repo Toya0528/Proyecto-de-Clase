@@ -19,19 +19,26 @@ public final class UUIDHelper {
 	}
 	
 	public UUID getDefault(final UUID value) {
-		return ObjectHelper.getDefault(value, getDefault());
+		return value == null ? getDefault() : value;
 	}
 	
 	public UUID getFromString(final String uuidAsString) {
-		if(uuidAsString == null || "".equals(uuidAsString)) {
-			return getDefault();
-		} else {
-			return UUID.fromString(uuidAsString);
-		}
+		try {
+            if (uuidAsString == null || uuidAsString.isBlank()) {
+                return getDefault();
+            }
+            return UUID.fromString(uuidAsString);
+        } catch (IllegalArgumentException ex) {
+            return getDefault();
+        }
 	}
 	
 	public boolean isDefaultUUID(final UUID value) {
-		return getDefault().equals(getDefault(value));
+		if (value == null) {
+            return true;
+        }
+		
+		return getDefault().equals(value);
 	}
 	
 	public UUID generateNewUUID() {

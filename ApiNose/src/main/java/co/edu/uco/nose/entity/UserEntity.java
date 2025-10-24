@@ -72,14 +72,16 @@ public final class UserEntity {
 		setEmail(email);
 		setCellPhoneNumber(cellPhoneNumber);
 		setEmailConfirmed(emailConfirmed);
+		setEmailConfirmedDefaultValue(false);
 		setCellPhoneNumberConfirmed(cellPhoneNumberConfirmed);
+		setCellPhoneNumberConfirmedDefaultValue(false);
 	}
 	
-	static UserEntity getDefaultValue() {
+	public static UserEntity getDefaultValue() {
 		return new UserEntity();
 	}
 	
-	static UserEntity getDefaultValue(final UserEntity user) {
+	public static UserEntity getDefaultValue(final UserEntity user) {
 		return ObjectHelper.getDefault(user, getDefaultValue());
 	}
 

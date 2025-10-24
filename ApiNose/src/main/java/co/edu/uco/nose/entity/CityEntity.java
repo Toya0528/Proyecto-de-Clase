@@ -30,11 +30,11 @@ public final class CityEntity {
 		setState(state);
 	}
 	
-	static CityEntity getDefaultValue() {
+	public static CityEntity getDefaultValue() {
 		return new CityEntity();
 	}
 	
-	static CityEntity getDefaultValue(final CityEntity city) {
+	public static CityEntity getDefaultValue(final CityEntity city) {
 		return ObjectHelper.getDefault(city, getDefaultValue());
 	}
 

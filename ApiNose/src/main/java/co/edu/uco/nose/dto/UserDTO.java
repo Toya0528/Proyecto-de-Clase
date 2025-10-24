@@ -77,11 +77,11 @@ public final class UserDTO {
 		setCellPhoneNumberConfirmed(cellPhoneNumberConfirmed);
 	}
 	
-	static UserDTO getDefaultValue() {
+	public static UserDTO getDefaultValue() {
 		return new UserDTO();
 	}
 	
-	static UserDTO getDefaultValue(final UserDTO user) {
+	public static UserDTO getDefaultValue(final UserDTO user) {
 		return ObjectHelper.getDefault(user, getDefaultValue());
 	}
 

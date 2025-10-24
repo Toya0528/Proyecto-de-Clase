@@ -26,11 +26,11 @@ public final class CountryEntity {
 		setName(name);
 	}
 	
-	static CountryEntity getDefaultValue() {
+	public static CountryEntity getDefaultValue() {
 		return new CountryEntity();
 	}
 	
-	static CountryEntity getDefaultValue(final CountryEntity country) {
+	public static CountryEntity getDefaultValue(final CountryEntity country) {
 		return ObjectHelper.getDefault(country, getDefaultValue());
 	}
 	
