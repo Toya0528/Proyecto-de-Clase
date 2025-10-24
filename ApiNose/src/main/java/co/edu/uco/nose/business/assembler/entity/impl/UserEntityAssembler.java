@@ -19,25 +19,15 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 
 	@Override
 	public UserEntity toEntity(UserDomain domain) {
-		// ✅ No crear un nuevo UserDomain si ya viene uno válido
-		if (domain == null) {
-		    return new UserEntity();
-		}
-
-	    var identificationTypeTmp = IdentificationTypeEntityAssembler
+		//var domainTmp = ObjectHelper.getDefault(domain, new UserDomain(UUIDHelper.getUUIDHelper().getDefault()));
+	    
+		var identificationTypeTmp = IdentificationTypeEntityAssembler
 	            .getIdentificationTypeEntityAssembler()
 	            .toEntity(domain.getIdentificationType());
 
 	    var cityTmp = CityEntityAssembler
 	            .getCityEntityAssembler()
 	            .toEntity(domain.getResidenceCity());
-
-	    // 🧩 Debug: verificar IDs en cascada
-	    System.out.println("🧩 [Assembler] ID recibido en el dominio: " + domain.getId());
-	    System.out.println("🧾 [Assembler] ID del tipo de identificación: " +
-	            (domain.getIdentificationType() != null ? domain.getIdentificationType().getId() : "NULO"));
-	    System.out.println("🏙️ [Assembler] ID de la ciudad de residencia: " +
-	            (domain.getResidenceCity() != null ? domain.getResidenceCity().getId() : "NULO"));
 
 	    return new UserEntity(
 	            domain.getId(),

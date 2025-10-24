@@ -9,6 +9,7 @@ import co.edu.uco.nose.entity.CityEntity;
 public class CityEntityAssembler implements EntityAssembler<CityEntity, CityDomain> {
 	
 	private static final EntityAssembler<CityEntity, CityDomain> instance = new CityEntityAssembler();
+	
 	private CityEntityAssembler() {
 		
 	}
@@ -20,9 +21,6 @@ public class CityEntityAssembler implements EntityAssembler<CityEntity, CityDoma
 	@Override
 	public CityEntity toEntity(CityDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new CityDomain(UUIDHelper.getUUIDHelper().getDefault()));
-		if (UUIDHelper.getUUIDHelper().isDefaultUUID(domainTmp.getId())) {
-	        return null;
-	    }
 		var stateTmp = StateEntityAssembler.getStateEntityAssembler().toEntity(domainTmp.getState());
         return new CityEntity(domainTmp.getId(), domainTmp.getName(), stateTmp);
 	}

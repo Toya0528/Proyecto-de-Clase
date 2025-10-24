@@ -19,9 +19,10 @@ public final class UserFacadeImpl implements UserFacade{
 		var business = new UserBusinessImpl(daoFactory);
 		
 		try {
-			daoFactory.initTransaction();
 			
+			daoFactory.initTransaction();
 			var domain = UserDTOAssembler.getUserDTOAssembler().toDomain(userDto);
+			
 			business.registerNewUserInformation(domain);
 			
 			daoFactory.commitTransaction();	

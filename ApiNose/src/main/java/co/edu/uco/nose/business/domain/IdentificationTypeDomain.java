@@ -20,13 +20,12 @@ public final class IdentificationTypeDomain extends Domain {
 		setName(TextHelper.getDefault());
 	}
 	
-
 	public IdentificationTypeDomain(final UUID id, final String name) {
 		super(id);
 		setName(name);
 	}
 	
-	static IdentificationTypeDomain getDefaultValue() {
+	protected static IdentificationTypeDomain getDefaultValue() {
 		return new IdentificationTypeDomain();
 	}
 	

@@ -114,51 +114,30 @@ public enum MessagesEnum {
 	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER_WHILE_PREPARATION("Error inesperado durante la operación de consulta de la información de un usuario", 
 			"Se ha presentado un problema inesperado durante la preparacipon de la sentencia sql de la operación de consulta de la información de un usuario. No fue una SQLException, sino un error no controlado en el proceso de registro."),
 	
-	USER_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE("Error durante la consulta de la información de un tipo de documento", "Se ha presentado un problema tratando de consultar la información de un tipo de documento por favor intente de nuevo. "
-			+ "Si el problema persiste, por favor, contacte con al administrador del sistema"),
-	
-	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATIONTYPE("Error SQL durante la operación de consulta de la información de un tipo de documento", 
-			"Se ha presentado un problema de tipo SQLException durante la operación de consulta de la información de un tipo de documento."),
-	
-	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_IDENTIFICATIONTYPE("Error inesperado durante la consulta de la información de un tipo de documento", 
-			"Se ha presentado un problema inesperado durante la operación de consultar la información de un tipo de documento, por favor, intente de nuevo y si el problema persiste contacte al administrador del sistema."),
-	
-	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_IDENTIFICATIONTYPE("Error inesperado durante la operación de consulta de la información de un tipo de documento", 
-			"Se ha presentado un problema inesperado durante la operación de consulta de la información de un tipo de documento. No fue una SQLException, sino un error no controlado en el proceso de consulta."),
-	
-	USER_ERROR_SQL_EXCEPTION_FINDING_COUNTRY("Error durante la consulta de la información de un país", "Se ha presentado un problema tratando de consultar la información de un país. Por favor, intente de nuevo. "
-			+ "Si el problema persiste, por favor, contacte al administrador del sistema"),
-	
-	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_COUNTRY("Error SQL durante la operación de consultar la información de un país", "Se ha presentado un problema de tipo SQLException durante la operación de consultar la información de un país."),
-	
-	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_COUNTRY("Error inesperado durante la consulta de la información de un país", "Se ha presentado un problema inesperado durante la operación de consulta de la información de un país. "
-			+ "Por favor, intente de nuevo y si el problema persiste contacte al administrador del sistema."),
-	
-	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_COUNTRY("Error inesperado durante la operación de consulta de la información de un país", 
-			"Se ha presentado un problema inesperado durante la operación de consultar la información de un país. No fue una SQLException, sino un error no controlado en el proceso de consulta."),
-	
-	USER_ERROR_SQL_EXCEPTION_FINDING_STATE("Error durante la consulta de la información de un departamento", "Se ha presentado un problema tratando de consultar la información de un departamento, por favor, intente de nuevo. "
-			+ "Si el problema persiste contacte al administrador del sistema"),
-	
-	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_STATE("Error SQL durante la operación de consultar la información de un departamento", 
-			"Se ha presentado un problema de tipo SQLException durante la operación de consulta de la información de un departamento."),
-	
-	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_STATE("Error inesperado durante la consulta de la información de un departamento", 
-			"Se ha presentado un problema inesperado durante la operación de consulta de la información de un departamento. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
-	
-	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_STATE("Error inesperado durante la operación de consultar la información de un departamento", 
-			"Se ha presentado un problema inesperado durante la operación de consulta de la información de un departamento. No fue una SQLException, sino un error no controlado en el proceso de consulta."),
-	
-	USER_ERROR_SQL_EXCEPTION_FINDING_CITY("Error durante la consulta de la información de una ciudad", "Se ha presentado un problema tratando de consultar la información de una ciudad por favor intente de nuevo. "
-			+ "Si el problema persiste, por favor, contacte al administrador del sistema"),
-	
-	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_CITY("Error SQL durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema de tipo SQLException durante la operación de consulta de la información de una ciudad."),
-	
-	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_CITY("Error inesperado durante la consulta de la información de una ciudad", "Se ha presentado un problema inesperado durante la operación de consulta de la información de una ciudad. "
-			+ "Por favor, intente de nuevo y si el problema persiste contacte al administrador del sistema."),
-	
-	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_CITY("Error inesperado durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema inesperado durante la operación de consulta de la información de una ciudad. "
-			+ "No fue una SQLException, sino un error no controlado en el proceso de consulta."),
+	USER_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATION_TYPE_WHILE_EXECUTION("Error durante la consulta de la información de un tipo de documento", "Se ha presentado un problema tratando de ejecutar la consulta de la información de un tipo de documento por favor intente de nuevo. Si el problema persiste por favor contacte al administrador del sistema"),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATION_TYPE_WHILE_EXECUTION("Error SQL durante la operación de consulta de la información de un tipo de documento", "Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de un tipo de documento."),
+	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_IDENTIFICATION_TYPE_WHILE_EXECUTION("Error inesperado durante la consulta de la información de un tipo de documento", "Se ha presentado un problema inesperado durante la ejecución operación de consulta de la información de un tipo de documento. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_IDENTIFICATION_TYPE_WHILE_EXECUTION("Error inesperado durante la operación de consulta de la información de un tipo de documento", "Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de un tipo de documento. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_IDENTIFICATION_TYPE_WHILE_PREPARATION("Error SQL durante la operación de consulta de la información de un tipo de documento", "Se ha presentado un problema de tipo SQLException durante la preparacion de la sentencia sql para llevar a cabo la operación de consulta de la información de un tipo de documento."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_IDENTIFICATION_TYPE_WHILE_PREPARATION("Error inesperado durante la operación de consulta de la información de un tipo de documento", "Se ha presentado un problema inesperado durante la preparacipon de la sentencia sql de la operación de consulta de la información de un tipo de documento. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	USER_ERROR_SQL_EXCEPTION_FINDING_COUNTRY_WHILE_EXECUTION("Error durante la consulta de la información de un pais", "Se ha presentado un problema tratando de ejecutar la consulta de la información de un pais por favor intente de nuevo. Si el problema persiste por favor contacte al administrador del sistema"),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_COUNTRY_WHILE_EXECUTION("Error SQL durante la operación de consulta de la información de un pais", "Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de un pais."),
+	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_COUNTRY_WHILE_EXECUTION("Error inesperado durante la consulta de la información de un pais", "Se ha presentado un problema inesperado durante la ejecución operación de consulta de la información de un pais. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_COUNTRY_WHILE_EXECUTION("Error inesperado durante la operación de consulta de la información de un pais", "Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de un pais. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_COUNTRY_WHILE_PREPARATION("Error SQL durante la operación de consulta de la información de un pais", "Se ha presentado un problema de tipo SQLException durante la preparacion de la sentencia sql para llevar a cabo la operación de consulta de la información de un pais."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_COUNTRY_WHILE_PREPARATION("Error inesperado durante la operación de consulta de la información de un pais", "Se ha presentado un problema inesperado durante la preparacipon de la sentencia sql de la operación de consulta de la información de un pais. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	USER_ERROR_SQL_EXCEPTION_FINDING_STATE_WHILE_EXECUTION("Error durante la consulta de la información de un departamento", "Se ha presentado un problema tratando de ejecutar la consulta de la información de un departamento por favor intente de nuevo. Si el problema persiste por favor contacte al administrador del sistema"),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_STATE_WHILE_EXECUTION("Error SQL durante la operación de consulta de la información de un departamento", "Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de un departamento."),
+	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_STATE_WHILE_EXECUTION("Error inesperado durante la consulta de la información de un departamento", "Se ha presentado un problema inesperado durante la ejecución operación de consulta de la información de un departamento. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_STATE_WHILE_EXECUTION("Error inesperado durante la operación de consulta de la información de un departamento", "Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de un departamento. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_STATE_WHILE_PREPARATION("Error SQL durante la operación de consulta de la información de un departamento", "Se ha presentado un problema de tipo SQLException durante la preparacion de la sentencia sql para llevar a cabo la operación de consulta de la información de un departamento."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_STATE_WHILE_PREPARATION("Error inesperado durante la operación de consulta de la información de un departamento", "Se ha presentado un problema inesperado durante la preparacipon de la sentencia sql de la operación de consulta de la información de un departamento. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	USER_ERROR_SQL_EXCEPTION_FINDING_CITY_WHILE_EXECUTION("Error durante la consulta de la información de una ciudad", "Se ha presentado un problema tratando de ejecutar la consulta de la información de una ciudad por favor intente de nuevo. Si el problema persiste por favor contacte al administrador del sistema"),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_CITY_WHILE_EXECUTION("Error SQL durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de una ciudad."),
+	USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_CITY_WHILE_EXECUTION("Error inesperado durante la consulta de la información de una ciudad", "Se ha presentado un problema inesperado durante la ejecución operación de consulta de la información de una ciudad. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_CITY_WHILE_EXECUTION("Error inesperado durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de una ciudad. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+	TECHNICAL_ERROR_SQL_EXCEPTION_FINDING_CITY_WHILE_PREPARATION("Error SQL durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema de tipo SQLException durante la preparacion de la sentencia sql para llevar a cabo la operación de consulta de la información de una ciudad."),
+	TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_CITY_WHILE_PREPARATION("Error inesperado durante la operación de consulta de la información de una ciudad", "Se ha presentado un problema inesperado durante la preparacipon de la sentencia sql de la operación de consulta de la información de una ciudad. No fue una SQLException, sino un error no controlado en el proceso de registro."),
 	
 	USER_ERROR_WHILE_REGISTERING_USER_NULL_USER("La información del usuario es obligatoria", "No es posible registrar al usuario, ya que no se envió la informacion"),
 	TECHNICAL_ERROR_WHILE_REGISTERING_USER_NULL_USER("UserDomain fue enviado como nulo", "No es posible registrar al usuario, ya que este fue enviado como null"),

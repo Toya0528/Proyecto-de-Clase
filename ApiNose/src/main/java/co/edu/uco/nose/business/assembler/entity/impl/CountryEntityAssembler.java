@@ -9,6 +9,7 @@ import co.edu.uco.nose.entity.CountryEntity;
 public class CountryEntityAssembler implements EntityAssembler<CountryEntity, CountryDomain>{
 	
 	private static final EntityAssembler<CountryEntity, CountryDomain> instance = new CountryEntityAssembler();	
+	
 	private CountryEntityAssembler() {
 		
 	}

@@ -73,7 +73,7 @@ public final class UserDomain extends Domain {
 		setEmailConfirmed(emailConfirmed);
 	}
 	
-	public static UserDomain getDefaultValue() {
+	protected static UserDomain getDefaultValue() {
 		return new UserDomain();
 	}
 	

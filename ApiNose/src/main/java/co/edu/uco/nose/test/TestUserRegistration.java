@@ -12,15 +12,13 @@ public class TestUserRegistration {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("SI CORRO");
-		
 	try {
 		var user = new UserDTO();
 		
 		//Colocar todos los parametros
 		
 		user.setIdentificationType(new IdentificationTypeDTO(UUID.fromString("44444444-4444-4444-4444-444444444444")));
-        user.setIdentificationNumber("1036698451"); //1040 873 589                      
+        user.setIdentificationNumber("1040034676");                    
         user.setFirstName("Estefanía");
         user.setMiddleName("María");
         user.setLastName("Tobón");
@@ -30,10 +28,6 @@ public class TestUserRegistration {
         user.setCellPhoneNumber("3052416497");
         user.setEmailConfirmed(false);
         user.setCellPhoneNumberConfirmed(false);
-		
-        System.out.println("🧠 UUID del tipo de identificación en DTO: " + user.getIdentificationType().getId());
-        System.out.println("🏙️ UUID de la ciudad en DTO: " + user.getResidenceCity().getId());
-
         
 		var facade = new UserFacadeImpl();
 		
@@ -48,7 +42,7 @@ public class TestUserRegistration {
 		}catch(Exception e) {
 			e.printStackTrace();
 		
-	}
+		}
 		
 	}
 

@@ -11,7 +11,7 @@ public final class NoseException extends RuntimeException {
 	private String technicalMessage;
 	
 	private NoseException(final Throwable rootException, final String userMessage, 
-				final String technicalMessage) {
+			final String technicalMessage) {
 		
 		setRootException(rootException);
 		setUserMessage(userMessage);

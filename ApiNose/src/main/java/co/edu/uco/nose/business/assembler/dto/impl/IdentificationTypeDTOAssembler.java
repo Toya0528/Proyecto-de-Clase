@@ -11,7 +11,8 @@ import co.edu.uco.nose.dto.IdentificationTypeDTO;
 
 public final class IdentificationTypeDTOAssembler implements DTOAssembler<IdentificationTypeDTO, IdentificationTypeDomain>{
 	
-	private static final DTOAssembler<IdentificationTypeDTO, IdentificationTypeDomain> instance = new IdentificationTypeDTOAssembler();
+	private static final DTOAssembler<IdentificationTypeDTO, 
+		IdentificationTypeDomain> instance = new IdentificationTypeDTOAssembler();
 	
 	private IdentificationTypeDTOAssembler() {
 		

@@ -25,58 +25,27 @@ public final class UserBusinessImpl implements UserBusiness{
 	@Override
 	public void registerNewUserInformation(UserDomain userDomain) {
 		
-		//1. Validar que la informacion sea consistente a nivel de tipo de dato, longitud, oblatoriedad
-		//2. Validar que no exista otro usuario con el mismo tipo y número de documento
-		//3. Validar que no exista previamente un usuario con el mismo email
-		//4. Validar que no exista previamente un usuario con el mismo número de teléfono celular
-		//5. Generar un identificador para el nuevo usuario, asegurando de que no exista previamente
-		
-		
-		// 🟦 Paso 1: inicio del proceso
-	    System.out.println("=== [Paso 1] Iniciando registro de usuario ===");
-
-	    // 🟦 Validación de datos básicos
-	    System.out.println("=== [Paso 2] Validando datos básicos ===");
 		validateUserData(userDomain);
-		// 🟦 Validación de duplicados
-	    System.out.println("=== [Paso 3] Validando duplicados ===");
 		validateDuplicatedUser(userDomain);
 		
-		// 🟦 Generando ID único
-	    System.out.println("=== [Paso 4] Generando nuevo UUID ===");
 		var id = UUIDHelper.getUUIDHelper().generateNewUUID();
 		userDomain.setId(id);
-		System.out.println("🧠 ID asignado al dominio antes de ensamblar: " + userDomain.getId());
-		
-		// Validar una sola vez por seguridad (sin while)
-		System.out.println("=== [Paso 4.1] Verificando si el UUID ya existe ===");
+
 		var existingUser = daoFactory.getUserDAO().findById(id);
 		
 		if (!UUIDHelper.getUUIDHelper().isDefaultUUID(existingUser.getId())) {
-		    System.out.println("UUID duplicado detectado. Generando otro...");
 		    id = UUIDHelper.getUUIDHelper().generateNewUUID();
 		}
 
-		System.out.println("=== [Paso 4.2] UUID confirmado como único: " + id + " ===");
-		
-		// 🟦 Ensamblando entidad
-	    System.out.println("=== [Paso 5] Ensamblando entidad de usuario ===");
 		var userEntity = UserEntityAssembler.getUserEntityAssembler().toEntity(userDomain);
-		// 🟦 Verifica por consola
-		System.out.println("🧩 ID que viaja a BD: " + userEntity.getId());
-		
-		// 🟦 Creando usuario en BD
-	    System.out.println("=== [Paso 6] Ejecutando inserción en BD ===");
 		userEntity.setId(id);
 		
 		daoFactory.getUserDAO().create(userEntity);
 		
-		// 🟦 Fin del proceso
-	    System.out.println("=== [Paso 7] Usuario registrado exitosamente ===");
-		
 	}
 	
 	private void validateUserData (final UserDomain userDomain) {
+		
 		if(ObjectHelper.isNull(userDomain)) {
 			var userMessage = MessagesEnum.USER_ERROR_WHILE_REGISTERING_USER_NULL_USER.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_WHILE_REGISTERING_USER_NULL_USER.getContent();

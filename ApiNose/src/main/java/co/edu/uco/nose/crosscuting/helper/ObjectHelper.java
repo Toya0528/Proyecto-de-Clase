@@ -1,7 +1,5 @@
 package co.edu.uco.nose.crosscuting.helper;
 
-import java.util.UUID;
-
 public final class ObjectHelper {
 	
 	private ObjectHelper() {
@@ -15,8 +13,4 @@ public final class ObjectHelper {
 		return isNull(object) ? defaultValue : object;
 	}
 
-	public static UUID getDefault(UUID value, UUID default1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
