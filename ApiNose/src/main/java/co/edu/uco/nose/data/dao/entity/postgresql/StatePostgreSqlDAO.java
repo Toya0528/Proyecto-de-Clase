@@ -1,5 +1,6 @@
 package co.edu.uco.nose.data.dao.entity.postgresql;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import co.edu.uco.nose.entity.StateEntity;
 
 public final class StatePostgreSqlDAO extends SqlConnection implements StateDAO {
 	
-	public StatePostgreSqlDAO(java.sql.Connection connection) {
+	public StatePostgreSqlDAO(final Connection connection) {
 		super(connection);
 	}
 	
@@ -30,7 +31,7 @@ public final class StatePostgreSqlDAO extends SqlConnection implements StateDAO 
 	}
 
 	@Override
-	public List<StateEntity> findByFilter(StateEntity filterEntity) {
+	public List<StateEntity> findByFilter(final StateEntity filterEntity) {
 		
 var parametersList = new ArrayList<Object>();
 		
@@ -144,8 +145,7 @@ var parametersList = new ArrayList<Object>();
 		}
 
 	@Override
-	public StateEntity findById(UUID id) {
-		
+	public StateEntity findById(final UUID id) {
 		return findByFilter(new StateEntity(id)).stream().findFirst().orElse(new StateEntity());
 	}
 }

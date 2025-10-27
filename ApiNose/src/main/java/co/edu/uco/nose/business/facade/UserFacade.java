@@ -7,11 +7,11 @@ import co.edu.uco.nose.dto.UserDTO;
 
 public interface UserFacade {
 	
-	void registerNewUserInformation(UserDTO userDto);
+	void registerNewUserInformation(UserDTO userDTO);
 	
 	void dropUserInformation(UUID id);
 	
-	void updateUserInformation(UUID id, UserDTO userDto);
+	void updateUserInformation(UUID id, UserDTO userDTO);
 	
 	List<UserDTO> findAllUsers();
 	

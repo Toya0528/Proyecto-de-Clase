@@ -19,13 +19,13 @@ public class CountryEntityAssembler implements EntityAssembler<CountryEntity, Co
 	}
 
 	@Override
-	public CountryEntity toEntity(CountryDomain domain) {
+	public CountryEntity toEntity(final CountryDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new CountryDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new CountryEntity(domainTmp.getId(), domainTmp.getName());
 	}
 
 	@Override
-	public CountryDomain toDomain(CountryEntity entity) {
+	public CountryDomain toDomain(final CountryEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new CountryEntity());
 		return new CountryDomain(entityTmp.getId(), entityTmp.getName());
 	}

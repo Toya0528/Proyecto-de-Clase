@@ -18,9 +18,8 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
     }
 
 	@Override
-	public UserEntity toEntity(UserDomain domain) {
-		//var domainTmp = ObjectHelper.getDefault(domain, new UserDomain(UUIDHelper.getUUIDHelper().getDefault()));
-	    
+	public UserEntity toEntity(final UserDomain domain) {
+		
 		var identificationTypeTmp = IdentificationTypeEntityAssembler
 	            .getIdentificationTypeEntityAssembler()
 	            .toEntity(domain.getIdentificationType());
@@ -47,7 +46,7 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 	}
 
 	@Override
-	public UserDomain toDomain(UserEntity entity) {
+	public UserDomain toDomain(final UserEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new UserEntity());
 		var identificationTypeDomainTmp = IdentificationTypeEntityAssembler.getIdentificationTypeEntityAssembler().toDomain(entityTmp.getIdentificationType());
 		var cityDomainTmp = CityEntityAssembler.getCityEntityAssembler().toDomain(entityTmp.getResidenceCity());

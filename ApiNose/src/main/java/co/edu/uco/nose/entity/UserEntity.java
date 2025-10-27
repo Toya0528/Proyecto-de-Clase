@@ -191,7 +191,7 @@ public final class UserEntity {
 		return emailConfirmedDefaultValue;
 	}
 
-	private void setEmailConfirmedDefaultValue(boolean emailConfirmedDefaultValue) {
+	private void setEmailConfirmedDefaultValue(final boolean emailConfirmedDefaultValue) {
 		this.emailConfirmedDefaultValue = emailConfirmedDefaultValue;
 	}
 
@@ -199,7 +199,7 @@ public final class UserEntity {
 		return cellPhoneNumberConfirmedDefaultValue;
 	}
 
-	private void setCellPhoneNumberConfirmedDefaultValue(boolean cellPhoneNumberConfirmedDefaultValue) {
+	private void setCellPhoneNumberConfirmedDefaultValue(final boolean cellPhoneNumberConfirmedDefaultValue) {
 		this.cellPhoneNumberConfirmedDefaultValue = cellPhoneNumberConfirmedDefaultValue;
 	}
 

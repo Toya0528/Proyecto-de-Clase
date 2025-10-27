@@ -46,13 +46,13 @@ public final class UserFacadeImpl implements UserFacade{
 	}
 
 	@Override
-	public void dropUserInformation(UUID id) {
+	public void dropUserInformation(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateUserInformation(UUID id, UserDTO userDto) {
+	public void updateUserInformation(final UUID id, final UserDTO userDto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -64,37 +64,37 @@ public final class UserFacadeImpl implements UserFacade{
 	}
 
 	@Override
-	public List<UserDTO> findUsersByFilter(UserDTO userFilters) {
+	public List<UserDTO> findUsersByFilter(final UserDTO userFilters) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserDTO findUserById(UUID id) {
+	public UserDTO findUserById(final UUID id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void confirmMobileNumber(UUID id, int confirmationCode) {
+	public void confirmMobileNumber(final UUID id, final int confirmationCode) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void confirmEmail(UUID id, int confirmationCode) {
+	public void confirmEmail(final UUID id, final int confirmationCode) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendMobileNumberConfirmation(UUID id) {
+	public void sendMobileNumberConfirmation(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendEmailConfirmation(UUID id) {
+	public void sendEmailConfirmation(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}

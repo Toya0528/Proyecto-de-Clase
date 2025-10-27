@@ -317,7 +317,7 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 	}	
 
 	@Override
-	public void update(UserEntity entity) {
+	public void update(final UserEntity entity) {
 
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
@@ -363,7 +363,7 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 		
 	
 	@Override
-	public void delete(UUID id) {
+	public void delete(final UUID id) {
 
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		

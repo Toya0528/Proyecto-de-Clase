@@ -35,7 +35,7 @@ public final class IdentificationTypeDTOAssembler implements DTOAssembler<Identi
 	}
 
 	@Override
-	public List<IdentificationTypeDTO> toDTO(List<IdentificationTypeDomain> domainList) {
+	public List<IdentificationTypeDTO> toDTO(final List<IdentificationTypeDomain> domainList) {
 		
 		var identificationTypeDtoList = new ArrayList<IdentificationTypeDTO>();
 		

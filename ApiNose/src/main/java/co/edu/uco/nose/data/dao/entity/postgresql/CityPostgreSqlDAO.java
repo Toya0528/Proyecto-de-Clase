@@ -20,7 +20,7 @@ import co.edu.uco.nose.entity.StateEntity;
 
 public final class CityPostgreSqlDAO extends SqlConnection implements CityDAO {	
 
-	public CityPostgreSqlDAO(Connection connection) {
+	public CityPostgreSqlDAO(final Connection connection) {
 		super(connection);
 	}
 
@@ -31,7 +31,7 @@ public final class CityPostgreSqlDAO extends SqlConnection implements CityDAO {
 	}
 
 	@Override
-	public List<CityEntity> findByFilter(CityEntity filterEntity) {
+	public List<CityEntity> findByFilter(final CityEntity filterEntity) {
 		
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
@@ -155,7 +155,7 @@ public final class CityPostgreSqlDAO extends SqlConnection implements CityDAO {
 		}
 	
 	@Override
-	public CityEntity findById(UUID id) {
+	public CityEntity findById(final UUID id) {
 		
 	    return findByFilter(new CityEntity(id)).stream().findFirst().orElse(new CityEntity());
 	}

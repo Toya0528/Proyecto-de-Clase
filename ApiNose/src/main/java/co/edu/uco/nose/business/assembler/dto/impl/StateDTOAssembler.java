@@ -37,7 +37,7 @@ public final class StateDTOAssembler implements DTOAssembler<StateDTO, StateDoma
 	}
 
 	@Override
-	public List<StateDTO> toDTO(List<StateDomain> domainList) {
+	public List<StateDTO> toDTO(final List<StateDomain> domainList) {
 		var stateDtoList = new ArrayList<StateDTO>();
 
         for (var stateDomain : domainList) {

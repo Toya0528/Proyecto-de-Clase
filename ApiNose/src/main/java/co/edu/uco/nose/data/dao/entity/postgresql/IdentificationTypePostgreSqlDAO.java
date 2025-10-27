@@ -1,5 +1,6 @@
 package co.edu.uco.nose.data.dao.entity.postgresql;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import co.edu.uco.nose.entity.IdentificationTypeEntity;
 public final class IdentificationTypePostgreSqlDAO extends SqlConnection implements IdentificationTypeDAO {
 	
 	
-	public IdentificationTypePostgreSqlDAO(java.sql.Connection connection) {
+	public IdentificationTypePostgreSqlDAO(final Connection connection) {
 		super(connection);
 	}
 	
@@ -30,7 +31,7 @@ public final class IdentificationTypePostgreSqlDAO extends SqlConnection impleme
 	}
 
 	@Override
-	public List<IdentificationTypeEntity> findByFilter(IdentificationTypeEntity filterEntity) {
+	public List<IdentificationTypeEntity> findByFilter(final IdentificationTypeEntity filterEntity) {
 		
 		var parametersList = new ArrayList<Object>();
 		
@@ -125,8 +126,7 @@ public final class IdentificationTypePostgreSqlDAO extends SqlConnection impleme
 		}
 
 	@Override
-	public IdentificationTypeEntity findById(UUID id) {
-		
+	public IdentificationTypeEntity findById(final UUID id) {
 		return findByFilter(new IdentificationTypeEntity(id)).stream().findFirst().orElse(new IdentificationTypeEntity());
 	}
 

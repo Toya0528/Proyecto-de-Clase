@@ -18,7 +18,7 @@ import co.edu.uco.nose.entity.CountryEntity;
 
 public final class CountryPostgreSqlDAO extends SqlConnection implements CountryDAO {
 
-	public CountryPostgreSqlDAO(Connection connection) {
+	public CountryPostgreSqlDAO(final Connection connection) {
 		super(connection);
 	}
 	
@@ -29,7 +29,7 @@ public final class CountryPostgreSqlDAO extends SqlConnection implements Country
 	}
 
 	@Override
-	public List<CountryEntity> findByFilter(CountryEntity filterEntity) {
+	public List<CountryEntity> findByFilter(final CountryEntity filterEntity) {
 		
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
@@ -123,8 +123,7 @@ public final class CountryPostgreSqlDAO extends SqlConnection implements Country
 		}
 	
 	@Override
-	public CountryEntity findById(UUID id) {
-		
+	public CountryEntity findById(final UUID id) {
 		return findByFilter(new CountryEntity(id)).stream().findFirst().orElse(new CountryEntity());
 	}
 

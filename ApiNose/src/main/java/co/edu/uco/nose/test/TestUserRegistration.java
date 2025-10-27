@@ -18,14 +18,14 @@ public class TestUserRegistration {
 		//Colocar todos los parametros
 		
 		user.setIdentificationType(new IdentificationTypeDTO(UUID.fromString("44444444-4444-4444-4444-444444444444")));
-        user.setIdentificationNumber("1040034676");                    
-        user.setFirstName("Estefanía");
-        user.setMiddleName("María");
-        user.setLastName("Tobón");
-        user.setSecondLastName("Tobón");
+        user.setIdentificationNumber("10368954251");                    
+        user.setFirstName("Carlos");
+        user.setMiddleName("Antonio");
+        user.setLastName("Castro");
+        user.setSecondLastName("García");
         user.setResidenceCity(new CityDTO(UUID.fromString("33333333-3333-3333-3333-333333333333")));
-        user.setEmail("etobon06@gmail.com");
-        user.setCellPhoneNumber("3052416497");
+        user.setEmail("carlitos01@gmail.com");
+        user.setCellPhoneNumber("3145789654");
         user.setEmailConfirmed(false);
         user.setCellPhoneNumberConfirmed(false);
         

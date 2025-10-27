@@ -52,7 +52,7 @@ public final class NoseException extends RuntimeException {
 		return technicalMessage;
 	}
 	
-	private void setTechnicalMessage(String technicalMessage) {
+	private void setTechnicalMessage(final String technicalMessage) {
 		this.technicalMessage = technicalMessage;
 	}
 	public static long getSerialversionuid() {

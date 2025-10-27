@@ -23,7 +23,7 @@ public final class UserBusinessImpl implements UserBusiness{
 	}
 
 	@Override
-	public void registerNewUserInformation(UserDomain userDomain) {
+	public void registerNewUserInformation(final UserDomain userDomain) {
 		
 		validateUserData(userDomain);
 		validateDuplicatedUser(userDomain);
@@ -116,10 +116,9 @@ public final class UserBusinessImpl implements UserBusiness{
 		
 	}
 	
-	private void validateDuplicatedUser(UserDomain userDomain) {
+	private void validateDuplicatedUser(final UserDomain userDomain) {
 
 	    var userEntityFilter = UserEntityAssembler.getUserEntityAssembler().toEntity(userDomain);
-
 
 	    var userDAO = daoFactory.getUserDAO();
 
@@ -156,13 +155,13 @@ public final class UserBusinessImpl implements UserBusiness{
 	}
 
 	@Override
-	public void dropUserInformation(UUID id) {
+	public void dropUserInformation(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateUserInformation(UUID id, UserDomain userDomain) {
+	public void updateUserInformation(final UUID id, final UserDomain userDomain) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -174,37 +173,37 @@ public final class UserBusinessImpl implements UserBusiness{
 	}
 
 	@Override
-	public List<UserDomain> findUsersByFilter(UserDomain userFilters) {
+	public List<UserDomain> findUsersByFilter(final UserDomain userFilters) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserDomain findSpecificUser(UUID id) {
+	public UserDomain findSpecificUser(final UUID id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void confirmMobileNumber(UUID id, int confirmationCode) {
+	public void confirmMobileNumber(final UUID id, final int confirmationCode) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void confirmEmail(UUID id, int confirmationCode) {
+	public void confirmEmail(final UUID id, final int confirmationCode) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendMobileNumberConfirmation(UUID id) {
+	public void sendMobileNumberConfirmation(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendEmailConfirmation(UUID id) {
+	public void sendEmailConfirmation(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
