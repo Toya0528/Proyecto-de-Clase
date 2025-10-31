@@ -323,31 +323,34 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO {
 		
 		final var sql= new StringBuilder();
 		sql.append("UPDATE \"Usuario\" SET ");
-		sql.append("tipoIdentificacion = ?, ");
-		sql.append("primerNombre = ?, ");
-		sql.append("segundoNombre = ?, ");
-		sql.append("primerApellido = ?, ");
-		sql.append("segundoApellido = ?, ");
-		sql.append("ciudadResidencia = ?, ");
-		sql.append("correoElectronico = ?, ");
-		sql.append("numeroTelefonoMovil = ?, ");
-		sql.append("correoElectronicoConfirmado = ?, ");
-		sql.append("numeroTelefonoMovilConfirmado = ? ");
-		sql.append("WHERE id = ?;");
+	    sql.append("\"tipoIdentificacion\" = ?, ");
+	    sql.append("\"numeroIdentificacion\" = ?, ");
+	    sql.append("\"primerNombre\" = ?, ");
+	    sql.append("\"segundoNombre\" = ?, ");
+	    sql.append("\"primerApellido\" = ?, ");
+	    sql.append("\"segundoApellido\" = ?, ");
+	    sql.append("\"ciudadResidencia\" = ?, ");
+	    sql.append("\"correoElectronico\" = ?, ");
+	    sql.append("\"numeroTelefonoMovil\" = ?, ");
+	    sql.append("\"correoElectronicoConfirmado\" = ?, ");
+	    sql.append("\"numeroTelefonoMovilConfirmado\" = ? ");
+	    sql.append("WHERE \"id\" = ?;");
 		
 	try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 				
-		preparedStatement.setObject(1, entity.getIdentificationType().getId());
-		preparedStatement.setString(2, entity.getFirstName());
-		preparedStatement.setString(3, entity.getMiddleName());
-		preparedStatement.setString(4, entity.getLastName());
-		preparedStatement.setString(5, entity.getSecondLastName());
-		preparedStatement.setObject(6, entity.getResidenceCity().getId());
-		preparedStatement.setString(7, entity.getEmail());
-		preparedStatement.setString(8, entity.getCellPhoneNumber());
-		preparedStatement.setBoolean(9, entity.isEmailConfirmed());
-		preparedStatement.setBoolean(10, entity.isCellPhoneNumberConfirmed());
-				
+		preparedStatement.setObject(1,  entity.getIdentificationType().getId());
+        preparedStatement.setString(2,  entity.getIdentificationNumber());
+        preparedStatement.setString(3,  entity.getFirstName());
+        preparedStatement.setString(4,  entity.getMiddleName());
+        preparedStatement.setString(5,  entity.getLastName());
+        preparedStatement.setString(6,  entity.getSecondLastName());
+        preparedStatement.setObject(7,  entity.getResidenceCity().getId());
+        preparedStatement.setString(8,  entity.getEmail());
+        preparedStatement.setString(9,  entity.getCellPhoneNumber());
+        preparedStatement.setBoolean(10, entity.isEmailConfirmed());
+        preparedStatement.setBoolean(11, entity.isCellPhoneNumberConfirmed());
+        preparedStatement.setObject(12, entity.getId());
+		
 		preparedStatement.executeUpdate();
 	
 		} catch (final SQLException exception) {

@@ -85,7 +85,7 @@ public class UserController {
 		try {
 			var facade = new UserFacadeImpl();
 			facade.updateUserInformation(id, user);
-			responseObjectData.addMessage("User updated sucesfully!!");
+			responseObjectData.addMessage("User updated succesfully!!");
 		} catch (final NoseException exception) {
 			responseObjectData = Response.createFailedResponse();
 			responseObjectData.addMessage(exception.getUserMessage());
@@ -151,7 +151,7 @@ public class UserController {
 		return new ResponseEntity<>(responseObjectData, responseStatusCode);
 	}
 	
-	@PostMapping("/{filter}")
+	@PostMapping("/filter")
 	public ResponseEntity<Response<UserDTO>> findUserByFilter (@RequestBody UserDTO userFilters) {
 		
 		Response<UserDTO> responseObjectData = Response.createSuccededResponse();
