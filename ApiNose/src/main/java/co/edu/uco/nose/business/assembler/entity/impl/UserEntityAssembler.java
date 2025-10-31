@@ -1,5 +1,8 @@
 package co.edu.uco.nose.business.assembler.entity.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.nose.business.assembler.entity.EntityAssembler;
 import co.edu.uco.nose.business.domain.UserDomain;
 import co.edu.uco.nose.crosscuting.helper.ObjectHelper;
@@ -54,6 +57,16 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 				entityTmp.getFirstName(), entityTmp.getMiddleName(), entityTmp.getLastName(),
 				entityTmp.getSecondLastName(), cityDomainTmp, entityTmp.getEmail(), entityTmp.getCellPhoneNumber(),
 				entityTmp.isEmailConfirmed(), entityTmp.isCellPhoneNumberConfirmed());
+	}
+
+	@Override
+	public List<UserDomain> toDomain(List<UserEntity> entityList) {
+		var userDomainList = new ArrayList<UserDomain>();
+		for (var userEntity : entityList) {
+			
+			userDomainList.add(toDomain(userEntity));
+		}
+		return userDomainList;
 	}
 
 }

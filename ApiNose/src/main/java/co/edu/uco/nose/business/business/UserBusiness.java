@@ -17,7 +17,7 @@ public interface UserBusiness {
 	
 	List<UserDomain> findUsersByFilter(UserDomain userFilters);
 	
-	UserDomain findSpecificUser(UUID id);
+	UserDomain findUserById(UUID id);
 	
 	void confirmMobileNumber(UUID id, int confirmationCode);
 	

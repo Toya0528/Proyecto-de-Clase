@@ -9,7 +9,7 @@ import co.edu.uco.nose.crosscuting.helper.TextHelper;
 public final class Response<T> {
 	
 	private List<String> messages;
-	private List<String> data;
+	private List<T> data;
 	private boolean responseSucceded;
 	
 	public Response(final boolean responseSucceded) {
@@ -29,6 +29,10 @@ public final class Response<T> {
 		return new Response<>(new ArrayList<String>(), new ArrayList<T>(), true);
 	}
 	
+	public static <T> Response<T> createFailedResponse() {
+		return new Response<>(new ArrayList<String>(), new ArrayList<T>(), false);
+	}
+	
 	public static <T> Response<T> createFailedResponse(final List<T> data) {
 		return new Response<>(new ArrayList<String>(), data, false);
 	}
@@ -37,30 +41,26 @@ public final class Response<T> {
 		return new Response<>(new ArrayList<String>(), data, true);
 	}
 	
-	public static <T> Response<T> createFailedResponse() {
-		return new Response<>(new ArrayList<String>(), new ArrayList<T>(), false);
-	}
-
-	public List<String> getMessages() {
-		return messages;
-	}
-
-	public void setMessages(final List<String> messages) {
-		this.messages = ObjectHelper.getDefault(messages, new ArrayList<String>());
-	}
-	
 	public void addMessage(final String message) {
-		if (TextHelper.isEmptyWithTrim(message)) {
+		if (!TextHelper.isEmptyWithTrim(message)) {
 		getMessages().add(message);
 		}
 	}
+	
+	public List<String> getMessages() {
+		return messages;
+	}
+	
+	public void setMessages(final List<String> messages) {
+		this.messages = ObjectHelper.getDefault(messages, new ArrayList<String>());
+	}
 
-	public List<String> getData() {
+	public List<T> getData() {
 		return data;
 	}
 
 	public void setData(final List<T> data) {
-		this.data = ObjectHelper.getDefault(messages, new ArrayList<String>());
+		this.data = ObjectHelper.getDefault(data, new ArrayList<T>());
 	}
 
 	public boolean isResponseSucceded() {
